@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------
+   Designsystem — färger hämtade ur Qonnected-loggan
+   ---------------------------------------------------------- */
+@theme {
+  --color-ink: #0a1430;
+  --color-navy: #001858;
+  --color-navy-deep: #000c28;
+  --color-royal: #06338e;
+  --color-royal-bright: #1e4fd0;
+  --color-signal: #46b4ff;
+  --color-signal-soft: #9ad6ff;
+  --color-paper: #f4f7fc;
+  --color-mist: #e3eaf7;
+  --color-line: #cbd7ee;
+  --color-muted: #56627e;
+
+  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-body: var(--font-hanken), sans-serif;
+  --font-mono: var(--font-space-mono), monospace;
+
+  --ease-brand: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-navy-deep);
+  }
+}
+
+/* ----------------------------------------------------------
+   Återanvändbara klasser (Tailwind @apply)
+   ---------------------------------------------------------- */
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-[1180px] px-7;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-royal-bright;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply inline-block h-px w-6 bg-royal-bright;
+  }
+  .eyebrow-light {
+    @apply text-signal;
+  }
+  .eyebrow-light::before {
+    @apply bg-signal;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2.5 rounded-full bg-signal px-7 py-3.5 text-base font-semibold text-navy-deep transition duration-200 hover:-translate-y-0.5 hover:bg-[#5fc0ff] hover:shadow-[0_14px_34px_-10px_rgba(70,180,255,0.75)];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2.5 rounded-full border border-signal-soft/40 px-6 py-3.5 text-base font-medium text-[#eaf3ff] transition duration-200 hover:-translate-y-0.5 hover:border-signal hover:bg-signal/10;
+  }
+  .btn-dark {
+    @apply inline-flex items-center gap-2.5 rounded-full bg-navy px-7 py-3.5 text-base font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-royal;
+  }
+
+  .section-h2 {
+    @apply mt-4 font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-ink;
+  }
+
+  .chip {
+    @apply rounded-lg border border-line bg-white px-3 py-2 font-mono text-[0.82rem] text-ink transition duration-200 hover:-translate-y-0.5 hover:border-signal hover:text-royal;
+  }
+  .chip-dark {
+    @apply rounded-lg border border-signal-soft/25 bg-white/5 px-3 py-2 font-mono text-[0.82rem] text-[#eaf3ff] transition duration-200 hover:-translate-y-0.5 hover:border-signal hover:text-white;
+  }
+}
