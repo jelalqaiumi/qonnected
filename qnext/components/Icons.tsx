@@ -55,6 +55,28 @@ const paths: Record<string, ReactElement> = {
       <path d="M18 24l4 4 8-8" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
     </>
   ),
+  calendar: (
+    <>
+      <rect x="8" y="11" width="32" height="29" rx="3" stroke="currentColor" strokeWidth="2.4" />
+      <path d="M8 19h32M17 7v7M31 7v7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M15 27h5M23 27h5M31 27h2M15 33h5M23 33h5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+    </>
+  ),
+  chat: (
+    <>
+      <path d="M8 12a3 3 0 0 1 3-3h26a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3H19l-8 7v-7a3 3 0 0 1-3-3V12z" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" />
+      <circle cx="18" cy="20" r="1.6" fill="currentColor" />
+      <circle cx="24" cy="20" r="1.6" fill="currentColor" />
+      <circle cx="30" cy="20" r="1.6" fill="currentColor" />
+    </>
+  ),
+  database: (
+    <>
+      <ellipse cx="24" cy="12" rx="14" ry="5" stroke="currentColor" strokeWidth="2.4" />
+      <path d="M10 12v12c0 2.8 6.3 5 14 5s14-2.2 14-5V12" stroke="currentColor" strokeWidth="2.4" />
+      <path d="M10 24v12c0 2.8 6.3 5 14 5s14-2.2 14-5V24" stroke="currentColor" strokeWidth="2.4" />
+    </>
+  ),
 };
 
 export function ServiceIcon({ name, className }: { name: string; className?: string }) {

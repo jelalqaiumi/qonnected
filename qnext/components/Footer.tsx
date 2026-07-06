@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-wrap justify-between gap-3.5 pt-7 font-mono text-[0.85rem] tracking-[0.05em] text-white/50">
           <span>© {new Date().getFullYear()} Qonnected</span>
-          <span>Stockholm · Norden</span>
+          <span>Östergötland · Sverige</span>
         </div>
       </div>
     </footer>

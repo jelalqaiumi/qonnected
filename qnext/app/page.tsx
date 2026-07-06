@@ -17,23 +17,26 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-[radial-gradient(120%_120%_at_80%_0%,#062a6e_0%,var(--color-navy)_42%,var(--color-navy-deep)_100%)] text-white">
+      <section
+        className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy-deep bg-cover bg-center text-white"
+        style={{ backgroundImage: "url('/Bakrundsbild.png')" }}
+      >
         <NetworkCanvas />
-        <div className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(100deg,rgba(0,9,32,0.92)_0%,rgba(0,9,32,0.55)_38%,rgba(0,9,32,0)_66%)]" />
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(100deg,rgba(0,9,32,0.94)_0%,rgba(0,9,32,0.7)_45%,rgba(0,9,32,0.4)_100%)]" />
         <div className="wrap relative z-[3] pb-20 pt-[120px]">
           <div className="max-w-[760px]">
             <span className="eyebrow">Systemutvecklare · Webb · Integrationer</span>
             <h1 className="mt-[26px] font-display text-[clamp(2.6rem,6.2vw,4.7rem)] font-semibold leading-[1.02] tracking-[-0.03em]">
-              Jag bygger{" "}
+              Vi kopplar ihop{" "}
               <span className="bg-[linear-gradient(100deg,var(--color-signal),var(--color-signal-soft))] bg-clip-text text-transparent">
-                hemsidor och system
+                idéer, system
               </span>{" "}
-              — från idé till drift.
+              och människor.
             </h1>
-            <p className="mt-[26px] max-w-[540px] text-[clamp(1.05rem,1.7vw,1.28rem)] text-[#e7eefc]/80">
-              Frilansande systemutvecklare i Stockholm. Jag tar idéer hela vägen
-              till körbar kod: webbplatser, skräddarsydda system och
-              integrationer som får saker att hänga ihop.
+            <p className="mt-[26px] max-w-[560px] text-[clamp(1.05rem,1.7vw,1.28rem)] text-[#e7eefc]/80">
+              Systemutvecklare i Östergötland. Jag bygger hemsidor, system och
+              AI-lösningar — från smarta chattbottar och fullstackapplikationer
+              till integrationer som får saker att hänga ihop.
             </p>
             <div className="mt-[38px] flex flex-wrap gap-4">
               <Link href="/kontakt" className="btn-primary">
@@ -45,8 +48,8 @@ export default function Home() {
               </Link>
             </div>
             <div className="mt-[54px] flex flex-wrap gap-x-7 gap-y-2.5 border-t border-signal-soft/20 pt-6 font-mono text-[0.78rem] tracking-[0.06em] text-signal-soft/70">
-              {["Frilans · Stockholm", "Projekt i hela Norden", "Från idé till drift"].map((m) => (
-                <span key={m} className="inline-flex items-center gap-2">
+              {["Östergötland · Sverige", "På distans för hela Norden", "Från idé till drift"].map((m) => (
+                  <span key={m} className="inline-flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-signal shadow-[0_0_10px_var(--color-signal)]" />
                   {m}
                 </span>

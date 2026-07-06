@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "Om mig",
   description:
-    "Frilansande systemutvecklare i Stockholm som bygger hemsidor och system. Lär känna hur jag jobbar.",
+    "Systemutvecklare i Östergötland som bygger hemsidor, system och AI-lösningar. Lär känna hur jag jobbar.",
 };
 
 const values = [
@@ -21,7 +21,7 @@ export default function OmPage() {
       <PageHead
         eyebrow="Om mig"
         title="En systemutvecklare som gillar att bygga saker som funkar"
-        intro="Jag är frilansande systemutvecklare i Stockholm. Jag bygger hemsidor och system — och håller det enkelt på vägen."
+        intro="Jag är systemutvecklare i Östergötland. Jag bygger hemsidor, system och AI-lösningar — och håller det enkelt på vägen."
       />
 
       <section className="py-[104px] max-md:py-[72px]">
@@ -40,7 +40,7 @@ export default function OmPage() {
                 roll — att det fungerar i verkligheten spelar all roll.
               </p>
               <p>
-                Som frilansare är jag den du pratar med{" "}
+                Som oberoende utvecklare är jag den du pratar med{" "}
                 <strong className="font-semibold text-ink">och</strong> den som bygger. Inga
                 mellanhänder, inget säljsnack. Jag säger hellre &quot;det där behöver du
                 inte&quot; än bygger något du inte har nytta av.

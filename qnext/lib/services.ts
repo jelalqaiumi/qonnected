@@ -13,9 +13,9 @@ export const services: Service[] = [
   {
     slug: "webbutveckling",
     num: "01",
-    title: "Webbutveckling",
+    title: "Webb & hemsidor",
     short:
-      "Hemsidor, webbappar och e-handel byggda från grunden — snabba, responsiva och enkla att förvalta.",
+      "Hemsidor och webbappar byggda från grunden — snabba, responsiva och enkla att förvalta.",
     icon: "web",
     intro:
       "Jag bygger webbplatser från grunden i stället för ur en mall. Det ger en sajt som laddar snabbt, ser ut precis som du vill och är enkel att bygga vidare på — utan att du sitter fast i ett verktyg du inte äger.",
@@ -28,33 +28,54 @@ export const services: Service[] = [
     goodFor: [
       "Dig som behöver en ny sajt eller vill byta ut en gammal",
       "Dig som vill ha något eget i stället för en låst page builder",
-      "Webbshoppar och kundportaler med specifika behov",
+      "Företag som vill synas proffsigt på nätet",
     ],
   },
   {
-    slug: "systemutveckling",
+    slug: "fullstack",
     num: "02",
-    title: "Systemutveckling",
+    title: "Fullstackutveckling",
     short:
-      "Skräddarsydda system och interna verktyg som gör exakt det ni behöver — byggda för att hålla.",
+      "Kompletta applikationer med både frontend och backend — databas, logik och gränssnitt i ett.",
     icon: "code",
     intro:
-      "När standardprogrammen inte räcker bygger jag ett system som passar just ert sätt att arbeta. Resultatet blir mindre krångel, färre manuella steg och en lösning ni faktiskt äger.",
+      "Jag bygger hela applikationen, inte bara ytan. Frontend som användaren möter, backend som gör jobbet och databasen som håller ordning på allt — byggt för att hänga ihop och hålla över tid.",
     includes: [
-      "Kartläggning av hur ni jobbar idag innan något byggs",
-      "Ett skräddarsytt system eller internt verktyg",
-      "Tydlig kod som går att underhålla och bygga vidare på",
-      "Dokumentation så att ni inte är beroende av en enda person",
+      "Frontend och backend byggt från grunden och anpassat efter era behov",
+      "Databas som håller ordning på er information på ett säkert sätt",
+      "Inloggning, behörigheter och allt annat en riktig applikation behöver",
+      "Ren, dokumenterad kod som går att bygga vidare på",
     ],
     goodFor: [
-      "Verksamheter som vuxit ur sina kalkylark",
-      "Team med en process som ingen standardprodukt riktigt stödjer",
-      "Dig som vill äga din lösning fullt ut",
+      "Dig som behöver en komplett applikation, inte bara en hemsida",
+      "Verksamheter som vuxit ur färdiga standardverktyg",
+      "Projekt där data, logik och gränssnitt måste spela ihop",
+    ],
+  },
+  {
+    slug: "bokningssystem",
+    num: "03",
+    title: "Bokningssystem & skräddarsydda system",
+    short:
+      "Boknings- och verksamhetssystem byggda kring exakt ert flöde — tider, resurser och kunder på ett ställe.",
+    icon: "calendar",
+    intro:
+      "Ett bokningssystem måste passa hur just ni jobbar — inte tvinga in er i någon annans mall. Jag bygger boknings- och verksamhetssystem från grunden, med tider, resurser, kunder och betalning samlat på ett ställe.",
+    includes: [
+      "Bokning av tider, resurser eller platser efter ert upplägg",
+      "Separata vyer — en för kunden, en för er som administrerar",
+      "Bekräftelser, påminnelser och överblick i realtid",
+      "Byggt så att det kan växa med fler funktioner senare",
+    ],
+    goodFor: [
+      "Verksamheter som tar emot bokningar och tröttnat på kalkylark",
+      "Dig som inte hittar en färdig produkt som passar ert flöde",
+      "Företag som vill ha bokning, kunder och betalning i samma system",
     ],
   },
   {
     slug: "integrationer",
-    num: "03",
+    num: "04",
     title: "Integrationer & API:er",
     short:
       "Jag kopplar ihop era affärssystem, API:er och databaser så att de pratar samma språk.",
@@ -74,45 +95,24 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "automation",
-    num: "04",
-    title: "Automation & dataflöden",
-    short:
-      "Manuella steg ersätts med flöden som sköter sig själva. Mindre klick, färre fel.",
-    icon: "flow",
-    intro:
-      "Återkommande, manuella moment är både tidstjuvar och felkällor. Jag automatiserar dem så att rätt sak händer av sig själv — och era timmar går till sådant som faktiskt kräver en människa.",
-    includes: [
-      "Automatisering av återkommande, manuella moment",
-      "Schemalagda jobb och rapporter som skapas av sig själva",
-      "Sammanställning av data från flera källor till ett ställe",
-      "Larm när något behöver din uppmärksamhet",
-    ],
-    goodFor: [
-      "Team som lägger timmar på samma uppgift varje vecka",
-      "Dig som vill minska risken för slarvfel",
-      "Verksamheter som vill skala utan att anställa fler för rutinjobb",
-    ],
-  },
-  {
-    slug: "drift",
+    slug: "ai-losningar",
     num: "05",
-    title: "Drift & hosting",
+    title: "AI-lösningar & chattbottar",
     short:
-      "Jag sätter upp servern, deployen och övervakningen — så att det ni byggt rullar stabilt.",
-    icon: "cloud",
+      "Chattbottar och AI-funktioner som svarar kunder, sparar tid och kopplas ihop med era system.",
+    icon: "chat",
     intro:
-      "En lösning är inte klar förrän den rullar stabilt i drift. Jag sätter upp en grund som är säker, skalbar och enkel att uppdatera — och håller koll så att den fortsätter fungera.",
+      "AI är som mest användbart när det löser en konkret uppgift. Jag bygger chattbottar och AI-funktioner som faktiskt hjälper — kopplade till era egna data och system, inte en generisk låda bredvid.",
     includes: [
-      "Uppsättning av server, hosting och domän",
-      "Automatiska driftsättningar (CI/CD) vid varje uppdatering",
-      "Säkerhetskopior och övervakning",
-      "En faktisk människa att höra av sig till när något hänger sig",
+      "Chattbottar som svarar kunder dygnet runt, tränade på ert material",
+      "AI kopplad till era egna system, dokument och data",
+      "Automatisering av text, svar och återkommande frågor",
+      "En lösning ni äger — inte en dyr prenumeration ni fastnar i",
     ],
     goodFor: [
-      "Dig som vill slippa pyssla med servrar själv",
-      "Sajter och system som måste vara igång dygnet runt",
-      "Projekt som ska kunna växa utan att byggas om",
+      "Företag som får många liknande kundfrågor",
+      "Dig som vill spara tid på support och manuellt svarande",
+      "Verksamheter som vill testa AI på ett konkret, avgränsat sätt",
     ],
   },
   {

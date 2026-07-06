@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s — Qonnected",
   },
   description:
-    "Frilansande systemutvecklare i Stockholm. Jag bygger hemsidor, system och integrationer — från idé till drift.",
+    "Systemutvecklare i Östergötland. Jag bygger hemsidor, system och AI-lösningar — från idé till drift.",
   metadataBase: new URL("https://qonnected.se"),
 };
 
