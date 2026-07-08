@@ -30,7 +30,7 @@ export function PageHead({
 export function CtaStrip({
   title,
   text,
-  cta = "Hör av dig",
+  cta = "Kontakta oss",
 }: {
   title: string;
   text: string;

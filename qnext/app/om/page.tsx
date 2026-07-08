@@ -65,7 +65,7 @@ export default function OmPage() {
       <CtaStrip
         title="Låter jag som rätt person för jobbet?"
         text="Ta en första pratstund med mig — helt förutsättningslöst."
-        cta="Säg hej"
+        cta="Kontakta oss"
       />
     </>
   );

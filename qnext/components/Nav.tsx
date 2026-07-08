@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 const links = [
   { href: "/", label: "Start" },
   { href: "/tjanster", label: "Tjänster" },
-  { href: "/arbete", label: "Arbete" },
   { href: "/om", label: "Om mig" },
 ];
 
@@ -39,7 +38,7 @@ export default function Nav() {
           : "border-transparent bg-transparent"
       }`}
     >
-      <div className="wrap flex h-[74px] items-center justify-between">
+      <div className="wrap relative flex h-[74px] items-center justify-between">
         <Link href="/" aria-label="Qonnected start" className="relative block h-[26px] w-[170px]">
           <Image
             src="/logo-light.png"
@@ -62,8 +61,8 @@ export default function Nav() {
           />
         </Link>
 
-        {/* Desktop */}
-        <nav className="hidden items-center gap-8 md:flex">
+        {/* Desktop links — centrerade */}
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
           {links.map((l) => (
             <Link
               key={l.href}
@@ -84,21 +83,26 @@ export default function Nav() {
               )}
             </Link>
           ))}
-          <Link href="/kontakt" className="rounded-full bg-signal px-5 py-2.5 text-[0.9rem] font-semibold text-navy-deep transition duration-200 hover:-translate-y-0.5 hover:bg-[#5fc0ff] hover:shadow-[0_10px_26px_-8px_rgba(70,180,255,0.7)]">
-            Boka ett samtal
-          </Link>
         </nav>
 
-        {/* Mobile toggle */}
-        <button
-          aria-label="Meny"
-          onClick={() => setOpen((v) => !v)}
-          className="relative z-[60] flex w-[30px] flex-col gap-[5px] md:hidden"
-        >
-          <span className={`h-0.5 w-full bg-white transition-all duration-300 ${open ? "translate-y-[7px] rotate-45" : ""} ${scrolled && !open ? "bg-ink" : "bg-white"}`} />
-          <span className={`h-0.5 w-full transition-all duration-300 ${open ? "opacity-0" : "opacity-100"} ${scrolled && !open ? "bg-ink" : "bg-white"}`} />
-          <span className={`h-0.5 w-full bg-white transition-all duration-300 ${open ? "-translate-y-[7px] -rotate-45" : ""} ${scrolled && !open ? "bg-ink" : "bg-white"}`} />
-        </button>
+        {/* Höger sida: knapp (desktop) + mobilmeny */}
+        <div className="flex items-center gap-3">
+          <Link
+            href="/kontakt"
+            className="hidden rounded-full bg-signal px-5 py-2.5 text-[0.9rem] font-semibold text-navy-deep transition duration-200 hover:-translate-y-0.5 hover:bg-[#5fc0ff] hover:shadow-[0_10px_26px_-8px_rgba(70,180,255,0.7)] md:inline-flex"
+          >
+            Kontakta oss
+          </Link>
+          <button
+            aria-label="Meny"
+            onClick={() => setOpen((v) => !v)}
+            className="relative z-[60] flex w-[30px] flex-col gap-[5px] md:hidden"
+          >
+            <span className={`h-0.5 w-full bg-white transition-all duration-300 ${open ? "translate-y-[7px] rotate-45" : ""} ${scrolled && !open ? "bg-ink" : "bg-white"}`} />
+            <span className={`h-0.5 w-full transition-all duration-300 ${open ? "opacity-0" : "opacity-100"} ${scrolled && !open ? "bg-ink" : "bg-white"}`} />
+            <span className={`h-0.5 w-full bg-white transition-all duration-300 ${open ? "-translate-y-[7px] -rotate-45" : ""} ${scrolled && !open ? "bg-ink" : "bg-white"}`} />
+          </button>
+        </div>
       </div>
 
       {/* Mobile panel */}
@@ -113,7 +117,7 @@ export default function Nav() {
           </Link>
         ))}
         <Link href="/kontakt" className="mt-2 w-fit rounded-full bg-signal px-5 py-2.5 text-[0.95rem] font-semibold text-navy-deep">
-          Boka ett samtal
+          Kontakta oss
         </Link>
       </div>
     </header>

@@ -6,7 +6,7 @@ import { MailIcon, PhoneIcon, PinIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "Kontakt",
-  description: "Hör av dig. Berätta kort vad du vill få byggt så svarar jag inom en arbetsdag.",
+  description: "Kontakta oss. Berätta kort vad du vill få byggt så svarar jag inom en arbetsdag.",
 };
 
 export default function KontaktPage() {
@@ -23,7 +23,7 @@ export default function KontaktPage() {
           <Reveal>
             <span className="eyebrow">Når mig direkt</span>
             <h2 className="mt-[18px] font-display text-[clamp(2rem,4vw,2.9rem)] font-semibold leading-[1.06] tracking-[-0.02em] text-ink">
-              Hör av dig hur du vill
+              Kontakta oss hur du vill
             </h2>
             <p className="mt-[18px] max-w-[420px] text-[1.08rem] text-muted">
               Hellre telefon? Ring på. Hellre mejl? Skriv. Hellre formuläret? Det funkar lika bra.

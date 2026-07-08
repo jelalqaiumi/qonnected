@@ -1,15 +1,37 @@
 import Link from "next/link";
 import NetworkCanvas from "@/components/NetworkCanvas";
 import Reveal from "@/components/Reveal";
+import Faq from "@/components/Faq";
 import { CtaStrip } from "@/components/Sections";
 import { ArrowRight, ServiceIcon } from "@/components/Icons";
 import { services } from "@/lib/services";
 
-const stack = {
-  Frontend: ["JavaScript", "TypeScript", "React", "HTML & CSS", "Vite"],
-  "Backend & data": ["Node.js", "Python", "PHP", "PostgreSQL", "REST & API"],
-  "Drift & verktyg": ["Docker", "Git", "Linux", "CI/CD", "Molnhosting"],
-};
+const faqs = [
+  {
+    q: "Vad kan du hjälpa mig med?",
+    a: "Jag bygger hemsidor, webbappar och skräddarsydda system — inklusive fullstackapplikationer, bokningssystem och integrationer. Är du osäker på vad du behöver hjälper jag dig gärna att reda ut det.",
+  },
+  {
+    q: "Vad kostar det att bygga en hemsida eller ett system?",
+    a: "Det beror helt på omfattningen. En enklare hemsida är en sak, ett större system med databas och inloggning en annan. Kontakta oss med vad du vill bygga så tar jag fram ett tydligt förslag och en offert utan förpliktelser.",
+  },
+  {
+    q: "Jobbar du med kunder utanför Östergötland?",
+    a: "Ja. Jag utgår från Östergötland men arbetar på distans i hela Norden. Det mesta går utmärkt att sköta digitalt, och vi ses gärna på plats när det behövs.",
+  },
+  {
+    q: "Hjälper du till med att synas på Google?",
+    a: "Ja. Jag bygger alltid med prestanda och sökmotorer i åtanke, och kan hjälpa dig med teknisk SEO och lokal synlighet så att ditt företag hittas när kunder söker.",
+  },
+  {
+    q: "Äger jag koden och sajten efteråt?",
+    a: "Ja. Det jag bygger är ditt — du sitter inte fast i en låst plattform eller en prenumeration du inte kommer ur. Koden kan vidareutvecklas av mig eller någon annan.",
+  },
+  {
+    q: "Hur kommer vi igång?",
+    a: "Enkelt — kontakta oss via kontaktformuläret, mejl eller telefon. Vi tar en förutsättningslös pratstund, går igenom vad du vill uppnå, och sedan sätter jag ihop ett förslag.",
+  },
+];
 
 export default function Home() {
   const top = services.slice(0, 3);
@@ -25,7 +47,7 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(100deg,rgba(0,9,32,0.94)_0%,rgba(0,9,32,0.7)_45%,rgba(0,9,32,0.4)_100%)]" />
         <div className="wrap relative z-[3] pb-20 pt-[120px]">
           <div className="max-w-[760px]">
-            <span className="eyebrow">Systemutvecklare · Webb · Integrationer</span>
+            <span className="eyebrow">Systemutvecklare </span>
             <h1 className="mt-[26px] font-display text-[clamp(2.6rem,6.2vw,4.7rem)] font-semibold leading-[1.02] tracking-[-0.03em]">
               Vi kopplar ihop{" "}
               <span className="bg-[linear-gradient(100deg,var(--color-signal),var(--color-signal-soft))] bg-clip-text text-transparent">
@@ -34,26 +56,13 @@ export default function Home() {
               och människor.
             </h1>
             <p className="mt-[26px] max-w-[560px] text-[clamp(1.05rem,1.7vw,1.28rem)] text-[#e7eefc]/80">
-              Systemutvecklare i Östergötland. Jag bygger hemsidor, system och
-              AI-lösningar — från smarta chattbottar och fullstackapplikationer
-              till integrationer som får saker att hänga ihop.
+             Systemutvecklare i Östergötland. Jag bygger hemsidor och skräddarsydda system som löser riktiga problem. Genomtänkt, driftsäkert och byggt för att växa i.
             </p>
             <div className="mt-[38px] flex flex-wrap gap-4">
               <Link href="/kontakt" className="btn-primary">
-                Boka ett samtal
+                Kontakta oss
                 <ArrowRight />
               </Link>
-              <Link href="/arbete" className="btn-ghost">
-                Se vad jag byggt
-              </Link>
-            </div>
-            <div className="mt-[54px] flex flex-wrap gap-x-7 gap-y-2.5 border-t border-signal-soft/20 pt-6 font-mono text-[0.78rem] tracking-[0.06em] text-signal-soft/70">
-              {["Östergötland · Sverige", "På distans för hela Norden", "Från idé till drift"].map((m) => (
-                  <span key={m} className="inline-flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-signal shadow-[0_0_10px_var(--color-signal)]" />
-                  {m}
-                </span>
-              ))}
             </div>
           </div>
         </div>
@@ -94,33 +103,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STACK */}
+      {/* FAQ */}
       <section className="bg-ink py-20 text-white max-md:py-[72px]">
         <div className="wrap">
           <Reveal className="mb-14 max-w-[620px]">
-            <span className="eyebrow eyebrow-light">Verktygslådan</span>
+            <span className="eyebrow eyebrow-light">Vanliga frågor</span>
             <h2 className="mt-4 font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-white">
-              Det jag bygger med
+              Bra att veta innan vi börjar
             </h2>
             <p className="mt-4 text-[1.08rem] text-[#e7eefc]/70">
-              Ett urval — byt gärna ut mot exakt din stack.
+              Här svarar jag på det jag oftast får frågor om. Hittar du inte svaret? Kontakta oss.
             </p>
           </Reveal>
-          <Reveal className="grid grid-cols-3 gap-[34px] max-[920px]:grid-cols-2 max-md:grid-cols-1">
-            {Object.entries(stack).map(([group, items]) => (
-              <div key={group}>
-                <h4 className="mb-4 font-mono text-[0.74rem] uppercase tracking-[0.12em] text-signal">
-                  {group}
-                </h4>
-                <div className="flex flex-wrap gap-2.5">
-                  {items.map((it) => (
-                    <span key={it} className="chip-dark">
-                      {it}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+          <Reveal className="mx-auto max-w-[820px]">
+            <Faq items={faqs} />
           </Reveal>
         </div>
       </section>

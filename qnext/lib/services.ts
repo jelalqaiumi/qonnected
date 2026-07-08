@@ -73,69 +73,11 @@ export const services: Service[] = [
       "Företag som vill ha bokning, kunder och betalning i samma system",
     ],
   },
-  {
-    slug: "integrationer",
-    num: "04",
-    title: "Integrationer & API:er",
-    short:
-      "Jag kopplar ihop era affärssystem, API:er och databaser så att de pratar samma språk.",
-    icon: "nodes",
-    intro:
-      "De flesta problem handlar inte om att ett system saknas, utan om att systemen inte pratar med varandra. Jag bygger kopplingarna så att data flödar automatiskt i stället för att klippas och klistras för hand.",
-    includes: [
-      "Integration mellan affärssystem, e-handel, CRM och liknande",
-      "Egna API:er eller koppling mot befintliga",
-      "Säker hantering av data på vägen mellan systemen",
-      "Övervakning så att du märker om något slutar fungera",
-    ],
-    goodFor: [
-      "Företag där samma uppgift matas in i flera system",
-      "Dig som vill att webb, lager och ekonomi ska hänga ihop",
-      "Verksamheter som vuxit och fått en spretig systemflora",
-    ],
-  },
-  {
-    slug: "ai-losningar",
-    num: "05",
-    title: "AI-lösningar & chattbottar",
-    short:
-      "Chattbottar och AI-funktioner som svarar kunder, sparar tid och kopplas ihop med era system.",
-    icon: "chat",
-    intro:
-      "AI är som mest användbart när det löser en konkret uppgift. Jag bygger chattbottar och AI-funktioner som faktiskt hjälper — kopplade till era egna data och system, inte en generisk låda bredvid.",
-    includes: [
-      "Chattbottar som svarar kunder dygnet runt, tränade på ert material",
-      "AI kopplad till era egna system, dokument och data",
-      "Automatisering av text, svar och återkommande frågor",
-      "En lösning ni äger — inte en dyr prenumeration ni fastnar i",
-    ],
-    goodFor: [
-      "Företag som får många liknande kundfrågor",
-      "Dig som vill spara tid på support och manuellt svarande",
-      "Verksamheter som vill testa AI på ett konkret, avgränsat sätt",
-    ],
-  },
-  {
-    slug: "radgivning",
-    num: "06",
-    title: "Teknisk rådgivning",
-    short:
-      "Kodgranskning, arkitektur och en rak teknisk åsikt innan ni bygger vidare.",
-    icon: "shield",
-    intro:
-      "Ibland behöver du inte mer kod — du behöver någon som granskar det som finns och ger en rak rekommendation. Jag hjälper dig fatta tekniska beslut du kan luta dig mot.",
-    includes: [
-      "Granskning av befintlig kod och arkitektur",
-      "Rekommendationer kring teknikval och struktur",
-      "Bollplank inför större beslut och ombyggnader",
-      "Översättning av teknik till något ledningen kan ta ställning till",
-    ],
-    goodFor: [
-      "Dig som ska påbörja ett bygge och vill ha rätt riktning",
-      "Team som vill ha en second opinion på sin lösning",
-      "Beslutsfattare som behöver tekniken förklarad rakt",
-    ],
-  },
+
+  
+
+  
+
 ];
 
 export function getService(slug: string): Service | undefined {

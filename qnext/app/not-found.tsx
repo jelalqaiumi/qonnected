@@ -10,7 +10,7 @@ export default function NotFound() {
           Den sidan kunde jag inte koppla upp
         </h1>
         <p className="mt-4 max-w-[480px] text-[#e7eefc]/80">
-          Länken leder ingenstans. Hör av dig om du letade efter något särskilt.
+          Länken leder ingenstans. Kontakta oss om du letade efter något särskilt.
         </p>
         <Link href="/" className="btn-primary mt-8">
           Till startsidan

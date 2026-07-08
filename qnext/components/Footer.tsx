@@ -26,22 +26,26 @@ export default function Footer() {
                 Sidor
               </h5>
               <FootLink href="/tjanster">Tjänster</FootLink>
-              <FootLink href="/arbete">Arbete</FootLink>
               <FootLink href="/om">Om mig</FootLink>
               <FootLink href="/kontakt">Kontakt</FootLink>
             </div>
             <div>
               <h5 className="mb-[18px] font-mono text-[0.72rem] uppercase tracking-[0.12em] text-signal-soft">
-                Hör av dig
+                Kontakta oss
               </h5>
               <FootLink href="mailto:hej@qonnected.se">hej@qonnected.se</FootLink>
               <FootLink href="tel:+46812345678">08-123 456 78</FootLink>
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap justify-between gap-3.5 pt-7 font-mono text-[0.85rem] tracking-[0.05em] text-white/50">
+        <div className="flex flex-wrap items-center justify-between gap-3.5 pt-7 font-mono text-[0.85rem] tracking-[0.05em] text-white/50">
           <span>© {new Date().getFullYear()} Qonnected</span>
-          <span>Östergötland · Sverige</span>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link href="/integritetspolicy" className="transition-colors hover:text-white">
+              Integritetspolicy
+            </Link>
+            <span>Östergötland · Sverige</span>
+          </div>
         </div>
       </div>
     </footer>

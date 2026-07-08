@@ -56,7 +56,7 @@ export default function TjansterPage() {
       <CtaStrip
         title="Osäker på var du ska börja?"
         text="Beskriv vad du vill få byggt så föreslår jag minsta möjliga väg framåt."
-        cta="Boka ett samtal"
+        cta="Kontakta oss"
       />
     </>
   );

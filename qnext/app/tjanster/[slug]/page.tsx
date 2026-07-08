@@ -95,7 +95,7 @@ export default async function ServicePage({
                 ))}
               </ul>
               <Link href="/kontakt" className="btn-primary mt-9 w-full justify-center">
-                Boka ett samtal
+                Kontakta oss
                 <ArrowRight />
               </Link>
             </div>
@@ -130,7 +130,7 @@ export default async function ServicePage({
       <CtaStrip
         title={`Vill du prata ${service.title.toLowerCase()}?`}
         text="Beskriv vad du behöver så återkommer jag inom en arbetsdag."
-        cta="Hör av dig"
+        cta="Kontakta oss"
       />
     </>
   );
