@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "./Reveal";
 import { ArrowRight } from "./Icons";
 
@@ -50,6 +51,30 @@ export function CtaStrip({
             {cta}
             <ArrowRight />
           </Link>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+export function SwedenCoverageSection() {
+  return (
+    <section className="bg-paper py-20 max-md:py-[72px]">
+      <div className="wrap">
+        <Reveal className="overflow-hidden rounded-[22px] border border-line bg-white p-4 md:p-6">
+          <div className="rounded-xl bg-[linear-gradient(160deg,#eef3fb_0%,#dfe8f6_100%)] p-3 md:p-4">
+            <Image
+              src="/sverige.png"
+              alt="Karta över Sverige markerad i rött"
+              width={1152}
+              height={768}
+              className="h-auto w-full rounded-lg border border-line/60"
+              priority={false}
+            />
+            <p className="mt-3 text-center font-mono text-[0.82rem] uppercase tracking-[0.1em] text-royal-bright">
+              Vi jobbar inom Sverige
+            </p>
+          </div>
         </Reveal>
       </div>
     </section>
