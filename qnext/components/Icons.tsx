@@ -21,14 +21,24 @@ export function ArrowUpRight(props: IconProps) {
 const paths: Record<string, ReactElement> = {
   web: (
     <>
-      <rect x="6" y="10" width="36" height="26" rx="3" stroke="currentColor" strokeWidth="2.4" />
-      <path d="M6 17h36" stroke="currentColor" strokeWidth="2.4" />
-      <circle cx="11" cy="13.5" r="1.2" fill="currentColor" />
-      <circle cx="15" cy="13.5" r="1.2" fill="currentColor" />
+      <rect x="6" y="9" width="36" height="23" rx="3.5" stroke="currentColor" strokeWidth="2.4" />
+      <path d="M24 32v7M16 39h16" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M6 26h36" stroke="currentColor" strokeWidth="2.4" />
     </>
   ),
   code: (
-    <path d="M17 16l-7 8 7 8M31 16l7 8-7 8M27 12l-6 24" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+    <>
+      <rect x="8" y="10" width="13" height="28" rx="2.5" stroke="currentColor" strokeWidth="2.4" />
+      <rect x="27" y="10" width="13" height="28" rx="2.5" stroke="currentColor" strokeWidth="2.4" />
+      <path d="M17 17l-3 3 3 3M31 17l3 3-3 3M19 30h10" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  ),
+  cart: (
+    <>
+      <path d="M14 15h20a3 3 0 0 1 3 3v15a3 3 0 0 1-3 3H14a3 3 0 0 1-3-3V18a3 3 0 0 1 3-3z" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" />
+      <path d="M18 15a6 6 0 1 1 12 0" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M18 22v6M30 22v6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+    </>
   ),
   nodes: (
     <>
@@ -60,6 +70,42 @@ const paths: Record<string, ReactElement> = {
       <rect x="8" y="11" width="32" height="29" rx="3" stroke="currentColor" strokeWidth="2.4" />
       <path d="M8 19h32M17 7v7M31 7v7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
       <path d="M15 27h5M23 27h5M31 27h2M15 33h5M23 33h5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+    </>
+  ),
+  camera: (
+    <>
+      <path d="M12 16h6l3-4h6l3 4h6a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3H12a3 3 0 0 1-3-3V19a3 3 0 0 1 3-3z" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" />
+      <circle cx="24" cy="27" r="6.5" stroke="currentColor" strokeWidth="2.4" />
+      <circle cx="33.5" cy="19.5" r="1.5" fill="currentColor" />
+    </>
+  ),
+  video: (
+    <>
+      <rect x="8" y="15" width="32" height="22" rx="3" stroke="currentColor" strokeWidth="2.4" />
+      <path d="M8 22h32" stroke="currentColor" strokeWidth="2.4" />
+      <path d="M14 15l4 7M22 15l4 7M30 15l4 7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+    </>
+  ),
+  search: (
+    <>
+      <rect x="8" y="14" width="30" height="20" rx="2.5" stroke="currentColor" strokeWidth="2.4" />
+      <circle cx="20.5" cy="24" r="4.5" stroke="currentColor" strokeWidth="2.4" />
+      <path d="M24 27.5l4 4" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M8 34h30" stroke="currentColor" strokeWidth="2.4" />
+    </>
+  ),
+  coin: (
+    <>
+      <circle cx="24" cy="24" r="13" stroke="currentColor" strokeWidth="2.4" />
+      <path d="M28 18.8c-1-1-2.4-1.6-4-1.6-2.6 0-4.5 1.5-4.5 3.6 0 2.3 2 3.1 4.4 3.7 2.5.6 4.6 1.2 4.6 3.8 0 2.1-1.9 3.7-4.6 3.7-1.8 0-3.5-.7-4.7-2" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M24 15v18" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+    </>
+  ),
+  ads: (
+    <>
+      <circle cx="24" cy="24" r="13" stroke="currentColor" strokeWidth="2.4" />
+      <path d="M28 18.8c-1-1-2.4-1.6-4-1.6-2.6 0-4.5 1.5-4.5 3.6 0 2.3 2 3.1 4.4 3.7 2.5.6 4.6 1.2 4.6 3.8 0 2.1-1.9 3.7-4.6 3.7-1.8 0-3.5-.7-4.7-2" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M24 15v18" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
     </>
   ),
   chat: (

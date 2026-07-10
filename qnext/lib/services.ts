@@ -73,27 +73,7 @@ export const services: Service[] = [
       "Företag som vill ha bokning, kunder och betalning i samma system",
     ],
   },
-  {
-    slug: "integrationer",
-    num: "04",
-    title: "Integrationer & API:er",
-    short:
-      "Jag kopplar ihop era affärssystem, API:er och databaser så att de pratar samma språk.",
-    icon: "nodes",
-    intro:
-      "De flesta problem handlar inte om att ett system saknas, utan om att systemen inte pratar med varandra. Jag bygger kopplingarna så att data flödar automatiskt i stället för att klippas och klistras för hand.",
-    includes: [
-      "Integration mellan affärssystem, e-handel, CRM och liknande",
-      "Egna API:er eller koppling mot befintliga",
-      "Säker hantering av data på vägen mellan systemen",
-      "Övervakning så att du märker om något slutar fungera",
-    ],
-    goodFor: [
-      "Företag där samma uppgift matas in i flera system",
-      "Dig som vill att webb, lager och ekonomi ska hänga ihop",
-      "Verksamheter som vuxit och fått en spretig systemflora",
-    ],
-  },
+  /*
   {
     slug: "ai-losningar",
     num: "05",
@@ -115,25 +95,26 @@ export const services: Service[] = [
       "Verksamheter som vill testa AI på ett konkret, avgränsat sätt",
     ],
   },
-  {
-    slug: "radgivning",
-    num: "06",
-    title: "Teknisk rådgivning",
+  */
+ {
+    slug: "e-handel",
+    num: "04",
+    title: "E-handel",
     short:
-      "Kodgranskning, arkitektur och en rak teknisk åsikt innan ni bygger vidare.",
-    icon: "shield",
+      "Webbshop med betalning, produkter och lager — byggd för att sälja och enkel att sköta.",
+    icon: "cart",
     intro:
-      "Ibland behöver du inte mer kod — du behöver någon som granskar det som finns och ger en rak rekommendation. Jag hjälper dig fatta tekniska beslut du kan luta dig mot.",
+      "Jag bygger webbutiker från grunden, anpassade efter vad du säljer. Med smidig kassa, säkra betalningar och koll på lagret — så att kunden handlar enkelt och du slipper krångel bakom kulisserna.",
     includes: [
-      "Granskning av befintlig kod och arkitektur",
-      "Rekommendationer kring teknikval och struktur",
-      "Bollplank inför större beslut och ombyggnader",
-      "Översättning av teknik till något ledningen kan ta ställning till",
+      "Webbshop anpassad efter dina produkter och ditt flöde",
+      "Säker betalning med de vanligaste betalsätten",
+      "Koll på lager, ordrar och kunder på ett ställe",
+      "Byggt för mobilen, där de flesta handlar idag",
     ],
     goodFor: [
-      "Dig som ska påbörja ett bygge och vill ha rätt riktning",
-      "Team som vill ha en second opinion på sin lösning",
-      "Beslutsfattare som behöver tekniken förklarad rakt",
+      "Dig som vill börja sälja på nätet",
+      "Butiker som vill koppla ihop webb och fysisk försäljning",
+      "Verksamheter som vuxit ur en enkel, färdig webbshopstjänst",
     ],
   },
 ];

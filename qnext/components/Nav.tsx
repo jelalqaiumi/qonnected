@@ -4,10 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { services } from "@/lib/services";
+import { ServiceIcon } from "@/components/Icons";
 
 const links = [
   { href: "/", label: "Start" },
-  { href: "/tjanster", label: "Tjänster" },
   { href: "/om", label: "Om mig" },
 ];
 
@@ -83,6 +84,51 @@ export default function Nav() {
               )}
             </Link>
           ))}
+
+          <div className="group relative">
+            <Link
+              href="/tjanster"
+              className={`relative inline-flex items-center gap-2 text-[0.92rem] font-medium transition-colors ${
+                pathname.startsWith("/tjanster")
+                  ? scrolled
+                    ? "text-royal"
+                    : "text-white"
+                  : scrolled
+                  ? "text-muted hover:text-royal"
+                  : "text-white/80 hover:text-white"
+              }`}
+            >
+              Tjänster
+              <span
+                className={`mt-0.5 h-2 w-2 rotate-45 border-b border-r transition-colors ${
+                  scrolled ? "border-current" : "border-current"
+                }`}
+              />
+              {pathname.startsWith("/tjanster") && (
+                <span className="absolute -bottom-2 left-0 right-0 h-0.5 rounded bg-signal" />
+              )}
+            </Link>
+
+            <div className="invisible absolute left-1/2 top-full mt-5 w-[310px] -translate-x-1/2 overflow-hidden rounded-[18px] border border-[#d8dfeb] bg-white p-3 opacity-0 shadow-[0_18px_38px_-20px_rgba(10,20,48,0.35)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+              <div className="absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 border-l border-t border-[#d8dfeb] bg-white" />
+              <div className="relative grid gap-1.5">
+                {services.map((service) => (
+                  <Link
+                    key={service.slug}
+                    href={`/tjanster/${service.slug}`}
+                    className="flex w-full min-w-0 items-center gap-3 rounded-2xl px-2.5 py-2.5 transition-colors hover:bg-[#f3f7ff]"
+                  >
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#e8f0ff] text-[#0b2f74] shadow-[inset_0_0_0_1px_rgba(11,47,116,0.08)]">
+                      <ServiceIcon name={service.icon} className="h-5 w-5" />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="truncate text-[0.96rem] font-medium text-ink">{service.title}</div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
         </nav>
 
         {/* Höger sida: knapp (desktop) + mobilmeny */}
@@ -116,6 +162,22 @@ export default function Nav() {
             {l.label}
           </Link>
         ))}
+        <div className="space-y-3">
+          <Link href="/tjanster" className="text-[1.1rem] font-medium text-white">
+            Tjänster
+          </Link>
+          <div className="grid gap-2 border-l border-signal-soft/20 pl-4">
+            {services.map((service) => (
+              <Link
+                key={service.slug}
+                href={`/tjanster/${service.slug}`}
+                className="text-[0.94rem] text-white/80 transition-colors hover:text-white"
+              >
+                {service.title}
+              </Link>
+            ))}
+          </div>
+        </div>
         <Link href="/kontakt" className="mt-2 w-fit rounded-full bg-signal px-5 py-2.5 text-[0.95rem] font-semibold text-navy-deep">
           Kontakta oss
         </Link>
