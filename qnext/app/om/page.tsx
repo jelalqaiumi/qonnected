@@ -5,7 +5,8 @@ import Reveal from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "Om mig",
   description:
-    "Systemutvecklare i Östergötland som bygger hemsidor, system och AI-lösningar. Lär känna hur jag jobbar.",
+    "Systemutvecklare i Östergötland som bygger hemsidor och skräddarsydda system. Lär känna hur jag jobbar.",
+  alternates: { canonical: "/om" },
 };
 
 const values = [

@@ -119,7 +119,7 @@ export const services: Service[] = [
   },
   {
     slug: "seo",
-    num: "06",
+    num: "05",
     title: "SEO & synlighet",
     short:
       "Att synas när kunder söker på Google — teknisk SEO, innehåll och lokal synlighet.",

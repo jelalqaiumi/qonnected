@@ -7,6 +7,7 @@ import { MailIcon, PhoneIcon, PinIcon } from "@/components/Icons";
 export const metadata: Metadata = {
   title: "Kontakt",
   description: "Kontakta oss. Berätta kort vad du vill få byggt så svarar jag inom en arbetsdag.",
+  alternates: { canonical: "/kontakt" },
 };
 
 export default function KontaktPage() {

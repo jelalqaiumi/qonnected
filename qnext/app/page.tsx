@@ -1,9 +1,26 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import Image from "next/image";
 import NetworkCanvas from "@/components/NetworkCanvas";
 import Reveal from "@/components/Reveal";
 import Faq from "@/components/Faq";
+import JsonLd from "@/components/JsonLd";
 import { ArrowRight, ServiceIcon } from "@/components/Icons";
 import { services } from "@/lib/services";
+import { faqSchema } from "@/lib/schema";
+
+export const metadata: Metadata = {
+  title: "Systemutvecklare i Östergötland — hemsidor & skräddarsydda system",
+  description:
+    "Jag bygger hemsidor, webbappar, bokningssystem och e-handel från grunden. Systemutvecklare i Östergötland som arbetar med kunder i hela Sverige.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Systemutvecklare i Östergötland — hemsidor & skräddarsydda system",
+    description:
+      "Jag bygger hemsidor, webbappar, bokningssystem och e-handel från grunden — från idé till drift.",
+    url: "/",
+  },
+};
 
 const faqs = [
   {
@@ -24,7 +41,7 @@ const faqs = [
   },
   {
     q: "Äger jag koden och sajten efteråt?",
-    a: "Ja. Det jag bygger är ditt — du sitter inte fast i en låst plattform eller en prenumeration du inte kommer ur. Koden kan vidareutvecklas av mig eller någon annan.",
+    a: "Ja. Det jag bygger är ditt. Du hamnar aldrig i en prenumeration du inte själv har skrivit på för — har vi inte avtalat om löpande drift eller förvaltning finns det inget abonnemang att ta sig ur. Koden kan vidareutvecklas av mig eller någon annan.",
   },
   {
     q: "Hur kommer vi igång?",
@@ -37,11 +54,20 @@ export default function Home() {
 
   return (
     <>
+      <JsonLd data={faqSchema(faqs)} />
+
       {/* HERO */}
-      <section
-        className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy-deep bg-cover bg-center text-white"
-        style={{ backgroundImage: "url('/Bakrundsbild.png')" }}
-      >
+      <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy-deep text-white">
+        {/* Hero-bilden är sidans LCP-element — via next/image serveras den i
+            rätt storlek och format för varje enhet. */}
+        <Image
+          src="/hero.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="z-0 object-cover object-center"
+        />
         <NetworkCanvas />
         <div className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(100deg,rgba(0,9,32,0.94)_0%,rgba(0,9,32,0.7)_45%,rgba(0,9,32,0.4)_100%)]" />
         <div className="wrap relative z-[3] pb-20 pt-[120px]">

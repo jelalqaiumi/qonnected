@@ -1,5 +1,12 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowRight } from "@/components/Icons";
+
+// 404-sidor ska aldrig hamna i sökresultatet.
+export const metadata: Metadata = {
+  title: "Sidan hittades inte",
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   return (

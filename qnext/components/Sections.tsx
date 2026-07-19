@@ -64,7 +64,7 @@ export function SwedenCoverageSection() {
         <Reveal className="overflow-hidden rounded-[22px] border border-line bg-white p-4 md:p-6">
           <div className="rounded-xl bg-[linear-gradient(160deg,#eef3fb_0%,#dfe8f6_100%)] p-3 md:p-4">
             <Image
-              src="/sverige.png"
+              src="/sverige.webp"
               alt="Karta över Sverige markerad i rött"
               width={1152}
               height={768}

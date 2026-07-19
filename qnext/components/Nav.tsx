@@ -42,7 +42,7 @@ export default function Nav() {
       <div className="wrap relative flex h-[74px] items-center justify-between">
         <Link href="/" aria-label="Qonnected start" className="relative block h-[26px] w-[170px]">
           <Image
-            src="/logo-light.png"
+            src="/logo-light.webp"
             alt="Qonnected"
             fill
             priority
@@ -52,7 +52,7 @@ export default function Nav() {
             }`}
           />
           <Image
-            src="/logo-dark.png"
+            src="/logo-dark.webp"
             alt="Qonnected"
             fill
             sizes="170px"
@@ -83,7 +83,8 @@ export default function Nav() {
                 <span className="absolute -bottom-2 left-0 right-0 h-0.5 rounded bg-signal" />
               )}
             </Link>
-          ))}
+
+))}
 
           <div className="group relative">
             <Link

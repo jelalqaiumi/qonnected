@@ -5,6 +5,8 @@ import Reveal from "@/components/Reveal";
 import { CtaStrip } from "@/components/Sections";
 import { ServiceIcon, CheckIcon, ArrowRight, ArrowUpRight } from "@/components/Icons";
 import { services, getService } from "@/lib/services";
+import JsonLd from "@/components/JsonLd";
+import { serviceSchema, breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -20,7 +22,24 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return { title: "Tjänst" };
-  return { title: service.title, description: service.short };
+
+  const path = `/tjanster/${service.slug}`;
+  return {
+    title: service.title,
+    description: service.short,
+    alternates: { canonical: path },
+    openGraph: {
+      type: "article",
+      url: path,
+      title: `${service.title} — Qonnected`,
+      description: service.short,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${service.title} — Qonnected`,
+      description: service.short,
+    },
+  };
 }
 
 export default async function ServicePage({
@@ -36,6 +55,15 @@ export default async function ServicePage({
 
   return (
     <>
+      <JsonLd data={serviceSchema(service)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Start", path: "/" },
+          { name: "Tjänster", path: "/tjanster" },
+          { name: service.title, path: `/tjanster/${service.slug}` },
+        ])}
+      />
+
       {/* HEAD */}
       <section className="relative overflow-hidden bg-[radial-gradient(120%_160%_at_85%_0%,#062a6e_0%,var(--color-navy)_48%,var(--color-navy-deep)_100%)] px-0 pb-[76px] pt-[150px] text-white max-md:pb-[60px] max-md:pt-[126px]">
         <div className="pointer-events-none absolute -right-20 -top-16 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(70,180,255,0.18)_0%,rgba(70,180,255,0)_70%)]" />

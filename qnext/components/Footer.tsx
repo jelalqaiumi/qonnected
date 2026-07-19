@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="max-w-[320px]">
             <Link href="/" aria-label="Qonnected start" className="block">
               <Image
-                src="/logo-light.png"
+                src="/logo-light.webp"
                 alt="Qonnected"
                 width={224}
                 height={34}

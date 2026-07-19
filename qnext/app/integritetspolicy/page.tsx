@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Integritetspolicy",
   description:
     "Så hanterar Qonnected dina personuppgifter — vilka uppgifter vi samlar in, varför och vilka rättigheter du har.",
+  alternates: { canonical: "/integritetspolicy" },
 };
 
 export default function IntegritetspolicyPage() {

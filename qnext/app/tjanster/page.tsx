@@ -8,7 +8,8 @@ import { services } from "@/lib/services";
 export const metadata: Metadata = {
   title: "Tjänster",
   description:
-    "Webbutveckling, systemutveckling, integrationer, automation, drift och teknisk rådgivning.",
+    "Webbutveckling, fullstackutveckling, bokningssystem, e-handel och SEO — byggt från grunden efter din verksamhet.",
+  alternates: { canonical: "/tjanster" },
 };
 
 export default function TjansterPage() {
@@ -16,7 +17,7 @@ export default function TjansterPage() {
     <>
       <PageHead
         eyebrow="Tjänster"
-        title="Sex saker jag bygger åt dig"
+        title="Det här bygger jag åt dig"
         intro="Från en hemsida från grunden till ett helt system. Jag väljer den enklaste lösningen som löser problemet — inte den krångligaste. Varje tjänst har en egen sida."
       />
 
