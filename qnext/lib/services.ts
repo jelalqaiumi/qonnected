@@ -117,6 +117,27 @@ export const services: Service[] = [
       "Verksamheter som vuxit ur en enkel, färdig webbshopstjänst",
     ],
   },
+  {
+    slug: "seo",
+    num: "06",
+    title: "SEO & synlighet",
+    short:
+      "Att synas när kunder söker på Google — teknisk SEO, innehåll och lokal synlighet.",
+    icon: "search",
+    intro:
+      "SEO - Nyckeln till fler kunder online. En snygg hemsida räcker inte om ingen hittar den. Med professionell SEO (sökmotoroptimering) förbättras din synlighet på Google, vilket gör att fler potentiella kunder hittar ditt företag när de söker efter dina produkter eller tjänster. En väloptimerad hemsida kan ge betydligt mer organisk trafik och fler kundförfrågningar över tid. Många företag ser en ökning av den organiska trafiken på 20-100 % eller mer inom 6-12 månader när SEO genomförs på rätt sätt. Hur mycket försäljningen ökar varierar, men fler relevanta besökare leder ofta till fler affärer. SEO är en långsiktig investering som stärker ditt varumärke, ökar din trovärdighet och hjälper dig att ligga steget före dina konkurrenter. Ju bättre du syns på Google, desto större är chansen att kunderna väljer dig.",
+    includes: [
+      "Teknisk SEO — snabb sajt, rätt struktur och kod Google förstår",
+      "Titlar och beskrivningar som får folk att klicka i sökresultatet",
+      "Lokal synlighet så att du hittas av kunder i din närhet",
+      "Uppsättning av Google Search Console så du kan följa resultatet",
+    ],
+    goodFor: [
+      "Dig som har en sajt men inte syns på Google",
+      "Företag som vill hittas av lokala kunder",
+      "Dig som vill ha fler besökare utan att betala för annonser",
+    ],
+  },
 ];
 
 export function getService(slug: string): Service | undefined {
