@@ -15,6 +15,21 @@ export type Pricing = {
   note: string;
 };
 
+/**
+ * Faktaruta om varför tjänsten spelar roll. Siffrorna ska vara publicerad
+ * branschforskning med angiven källa — aldrig löften om vad en enskild kund
+ * kommer att få. Resultatpåståenden kräver bevis enligt marknadsföringslagen,
+ * och vi har inga egna mätdata att luta oss mot. Det gäller även "upp till".
+ */
+export type Impact = {
+  /** Siffran som visas stort. Utelämnas när det saknas en källa värd namnet. */
+  stat?: string;
+  statLabel?: string;
+  body: string;
+  source?: string;
+  sourceUrl?: string;
+};
+
 export type Service = {
   slug: string;
   num: string;
@@ -27,6 +42,7 @@ export type Service = {
   process: ProcessStep[];
   faqs: ServiceFaq[];
   pricing?: Pricing;
+  impact: Impact;
 };
 
 export const services: Service[] = [
@@ -95,6 +111,15 @@ export const services: Service[] = [
         a: "Jag bygger alltid med teknisk sökmotoroptimering på plats: snabb laddning, rätt struktur, titlar och beskrivningar som Google förstår, samt sitemap. Att ranka på konkurrensutsatta sökord kräver därutöver innehåll över tid — det hjälper jag gärna till med separat.",
       },
     ],
+    impact: {
+      stat: "53 %",
+      statLabel:
+        "av besökarna på mobil lämnar en sida som tar mer än tre sekunder att ladda",
+      body: "Du kan vara bäst i länet på det du gör — hinner sajten inte fram får besökaren aldrig veta det. Därför bygger jag för fart från början, med bilder och kod som väger så lite som möjligt. Du behöver inte kunna något om det själv: jag sköter tekniken, strukturen och det som gör att Google förstår vad du erbjuder.",
+      source: "Google",
+      sourceUrl:
+        "https://business.google.com/think/marketing-strategies/mobile-page-speed-new-industry-benchmarks/",
+    },
   },
   {
     slug: "fullstack",
@@ -116,6 +141,10 @@ export const services: Service[] = [
       "Verksamheter som vuxit ur färdiga standardverktyg",
       "Projekt där data, logik och gränssnitt måste spela ihop",
     ],
+    pricing: {
+      from: "20 000 kr",
+      note: "Startpriset gäller en avgränsad applikation med ett tydligt syfte. Priset styrs av hur många funktioner som ska in, hur komplex datamodellen är och om det behövs inloggning, behörigheter eller kopplingar till andra system. Du får en fast offert innan vi börjar.",
+    },
     process: [
       {
         title: "Vi kartlägger flödet",
@@ -156,6 +185,9 @@ export const services: Service[] = [
         a: "Oftast ja. Har systemen ett öppet gränssnitt går de att koppla ihop, så att information inte behöver matas in på två ställen. Vi tittar på vad era befintliga system klarar innan vi lovar något.",
       },
     ],
+    impact: {
+      body: "Här sätter jag medvetet ingen procentsiffra. Vad ett eget system är värt beror helt på hur mycket manuellt arbete ni gör idag — dubbelinmatning, information som bor i tre olika filer, tid som går åt till att leta. Den räkningen gör vi tillsammans innan ni bestämmer er, med era egna siffror i stället för någon annans. Sedan bygger jag hela lösningen: gränssnitt, logik, databas och drift.",
+    },
   },
   {
     slug: "bokningssystem",
@@ -177,6 +209,11 @@ export const services: Service[] = [
       "Dig som inte hittar en färdig produkt som passar ert flöde",
       "Företag som vill ha bokning, kunder och betalning i samma system",
     ],
+    pricing: {
+      from: "15 000 kr",
+      to: "50 000 kr",
+      note: "Var i spannet du hamnar beror på hur många resurser som ska bokas, hur krångliga reglerna kring tiderna är, och om det ska in betalning, påminnelser eller koppling till er befintliga kalender. Du får en fast offert innan vi börjar.",
+    },
     process: [
       {
         title: "Vi går igenom hur ni bokar idag",
@@ -217,6 +254,14 @@ export const services: Service[] = [
         a: "Passar en färdig tjänst ert flöde är det ofta ett bra val, och det säger jag hellre än säljer något onödigt. Ett eget system är rätt när ni har regler som inte får plats i mallen, när avgiften per bokning börjar bita, eller när ni vill ha bokning, kunder och betalning i samma system.",
       },
     ],
+    impact: {
+      stat: "85 %",
+      statLabel:
+        "tycker att kontaktuppgifter och öppettider är viktiga när de undersöker ett lokalt företag",
+      body: "Folk vill se när du är ledig och boka direkt, helst utan att behöva ringa på kontorstid. Ett bokningssystem står öppet dygnet runt även när du inte gör det, och automatiska påminnelser är det enklaste sättet att minska uteblivna tider. Jag bygger både kundvyn och din adminvy, kopplar på betalning och påminnelser, och finns kvar när något behöver justeras.",
+      source: "BrightLocal",
+      sourceUrl: "https://www.brightlocal.com/research/consumer-search-behavior/",
+    },
   },
   {
     slug: "e-handel",
@@ -278,6 +323,15 @@ export const services: Service[] = [
         a: "För många är en färdig plattform helt rätt, och då säger jag det. Ett eget bygge lönar sig när månadsavgifter och transaktionsavgifter börjar kosta mer än det smakar, när du behöver flöden plattformen inte stödjer, eller när du vill äga hela lösningen.",
       },
     ],
+    impact: {
+      stat: "2×",
+      statLabel:
+        "så mycket tjänar mobilsajter som laddar på fem sekunder, jämfört med dem som tar nitton",
+      body: "I en webbutik är varje extra sekund i kassan en anledning att hoppa av. Därför bygger jag butiken lätt och kassan kort, med de betalsätt dina kunder faktiskt använder. Lager, ordrar och frakt hänger ihop så att du slipper hålla ordning på det manuellt — och jag finns kvar efter lansering när det är dags att se var kunderna faller ifrån.",
+      source: "Google",
+      sourceUrl:
+        "https://business.google.com/think/marketing-strategies/mobile-page-speed-new-industry-benchmarks/",
+    },
   },
   {
     slug: "seo",
@@ -339,6 +393,14 @@ export const services: Service[] = [
         a: "Det beror på upplägget. Jag kan arbeta enbart tekniskt, ta fram struktur och förslag som du fyller i, eller skriva texterna åt dig. Vi bestämmer omfattningen utifrån hur mycket tid du själv vill lägga.",
       },
     ],
+    impact: {
+      stat: "84 %",
+      statLabel:
+        "har sökt efter ett lokalt företag på nätet de senaste tre månaderna",
+      body: "Kunderna letar redan efter det du säljer — frågan är bara om de hittar dig eller någon annan. Syns du inte på första sidan är du i praktiken osynlig för dem. Jag går igenom tekniken, tar reda på vad dina kunder faktiskt söker på, ser till att sidorna svarar på det och sätter upp mätningen så att du själv kan följa utvecklingen i stället för att lita på mitt ord.",
+      source: "BrightLocal",
+      sourceUrl: "https://www.brightlocal.com/research/consumer-search-behavior/",
+    },
   },
 ];
 

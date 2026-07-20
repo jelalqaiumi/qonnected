@@ -7,7 +7,6 @@ import Faq from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { ArrowRight, ServiceIcon } from "@/components/Icons";
 import { services } from "@/lib/services";
-import { serviceAreas } from "@/lib/locations";
 import { faqSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -149,31 +148,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* OMRÅDEN — ren uppräkning, inga länkar */}
-      <section className="border-t border-line py-20 max-md:py-[72px]">
-        <div className="wrap">
-          <Reveal className="text-center">
-            <span className="eyebrow">Områden vi jobbar i</span>
-            <h2 className="mt-4 font-display text-[clamp(1.6rem,3vw,2.2rem)] font-semibold tracking-[-0.02em] text-ink">
-              Vi tar uppdrag över hela landet
-            </h2>
-            <p className="mx-auto mt-4 max-w-[520px] text-[1.02rem] text-muted">
-              Utgår från Motala i Östergötland och arbetar på plats i närområdet
-              — resten av landet sköter vi lika smidigt på distans.
-            </p>
-            <ul className="mx-auto mt-9 flex max-w-[720px] flex-wrap justify-center gap-2.5">
-              {serviceAreas.map((area) => (
-                <li
-                  key={area}
-                  className="rounded-full border border-line bg-white px-[18px] py-2.5 font-mono text-[0.82rem] tracking-[0.04em] text-ink"
-                >
-                  {area}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-      </section>
     </>
   );
 }

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { locations } from "@/lib/locations";
 
 export default function Footer() {
   return (
@@ -29,16 +28,6 @@ export default function Footer() {
               <FootLink href="/tjanster">Tjänster</FootLink>
               <FootLink href="/om">Om mig</FootLink>
               <FootLink href="/kontakt">Kontakt</FootLink>
-            </div>
-            <div>
-              <h5 className="mb-[18px] font-mono text-[0.72rem] uppercase tracking-[0.12em] text-signal-soft">
-                Orter
-              </h5>
-              {locations.map((l) => (
-                <FootLink key={l.slug} href={`/orter/${l.slug}`}>
-                  {l.name === "hela Sverige" ? "Hela Sverige" : l.name}
-                </FootLink>
-              ))}
             </div>
             <div>
               <h5 className="mb-[18px] font-mono text-[0.72rem] uppercase tracking-[0.12em] text-signal-soft">

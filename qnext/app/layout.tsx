@@ -3,6 +3,7 @@ import { Space_Grotesk, Hanken_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import ServiceAreas from "@/components/ServiceAreas";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
@@ -74,6 +75,7 @@ export default function RootLayout({
         <JsonLd data={websiteSchema()} />
         <Nav />
         <main>{children}</main>
+        <ServiceAreas />
         <Footer />
       </body>
     </html>

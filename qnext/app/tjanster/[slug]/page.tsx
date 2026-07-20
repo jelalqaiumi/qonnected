@@ -133,6 +133,40 @@ export default async function ServicePage({
         </div>
       </section>
 
+      {/* VARFÖR DET SPELAR ROLL — branschsiffror med källa, inga resultatlöften */}
+      <section className="pb-[104px] max-md:pb-[72px]">
+        <div className="wrap">
+          <Reveal className="mx-auto max-w-[860px] rounded-[22px] border border-signal/25 bg-[linear-gradient(140deg,rgba(6,51,142,0.05)_0%,rgba(70,180,255,0.08)_100%)] p-11 max-md:p-7">
+            {service.impact.stat && (
+              <div className="mb-6 flex items-baseline gap-4 max-md:flex-col max-md:gap-1.5">
+                <span className="font-display text-[clamp(2.6rem,6vw,3.8rem)] font-semibold leading-none tracking-[-0.03em] text-royal">
+                  {service.impact.stat}
+                </span>
+                <span className="max-w-[440px] text-[1.02rem] leading-snug text-ink">
+                  {service.impact.statLabel}
+                </span>
+              </div>
+            )}
+            <p className="text-[1.05rem] leading-relaxed text-muted">
+              {service.impact.body}
+            </p>
+            {service.impact.source && (
+              <p className="mt-5 font-mono text-[0.76rem] tracking-[0.06em] text-muted/70">
+                Källa:{" "}
+                <a
+                  href={service.impact.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 transition-colors hover:text-royal"
+                >
+                  {service.impact.source}
+                </a>
+              </p>
+            )}
+          </Reveal>
+        </div>
+      </section>
+
       {/* PROCESS */}
       <section className="border-t border-line bg-paper py-[104px] max-md:py-[72px]">
         <div className="wrap">
