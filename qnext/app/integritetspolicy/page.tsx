@@ -107,8 +107,8 @@ export default function IntegritetspolicyPage() {
               />
               <p>
                 Vill du använda någon av dessa rättigheter, kontakta oss på{" "}
-                <a href="mailto:hej@qonnected.se" className="text-royal underline underline-offset-2">
-                  hej@qonnected.se
+                <a href="mailto:info@qonnected.se" className="text-royal underline underline-offset-2">
+                  info@qonnected.se
                 </a>{" "}
                 så hjälper vi dig.
               </p>
@@ -131,10 +131,10 @@ export default function IntegritetspolicyPage() {
                 Har du frågor om hur vi hanterar dina personuppgifter? Kontakta oss:
               </p>
               <p className="text-ink">
-                <a href="mailto:hej@qonnected.se" className="text-royal underline underline-offset-2">
-                  hej@qonnected.se
+                <a href="mailto:info@qonnected.se" className="text-royal underline underline-offset-2">
+                  info@qonnected.se
                 </a>{" "}
-                · 08-123 456 78
+                · 076-191 34 46
               </p>
             </Block>
           </Reveal>

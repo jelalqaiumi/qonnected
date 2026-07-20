@@ -13,6 +13,7 @@ export function organizationSchema() {
     name: site.name,
     url: site.url,
     email: site.email,
+    telephone: site.phone,
     description: site.description,
     logo: absoluteUrl("/logo-dark.webp"),
     image: absoluteUrl("/logo-dark.webp"),
@@ -67,6 +68,22 @@ export function serviceSchema(service: Service) {
       { "@type": "AdministrativeArea", name: site.region },
       { "@type": "Country", name: "Sverige" },
     ],
+    inLanguage: "sv-SE",
+  };
+}
+
+/**
+ * Tjänst knuten till en specifik ort. Ger Google en tydlig koppling mellan
+ * verksamheten och orten, vilket är det som driver lokal synlighet.
+ */
+export function localServiceSchema(areaName: string, name: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    serviceType: "Webbutveckling och systemutveckling",
+    provider: { "@id": organizationId },
+    areaServed: { "@type": "Place", name: areaName },
     inLanguage: "sv-SE",
   };
 }

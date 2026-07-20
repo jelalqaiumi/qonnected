@@ -30,13 +30,13 @@ export default function KontaktPage() {
               Hellre telefon? Ring på. Hellre mejl? Skriv. Hellre formuläret? Det funkar lika bra.
             </p>
             <div className="mt-[38px] grid gap-[18px]">
-              <a href="mailto:hej@qonnected.se" className="flex items-center gap-3.5 text-[1.02rem] text-ink transition-colors hover:text-royal">
+              <a href="mailto:info@qonnected.se" className="flex items-center gap-3.5 text-[1.02rem] text-ink transition-colors hover:text-royal">
                 <MailIcon className="h-5 w-5 text-royal" />
-                hej@qonnected.se
+                info@qonnected.se
               </a>
-              <a href="tel:+46812345678" className="flex items-center gap-3.5 text-[1.02rem] text-ink transition-colors hover:text-royal">
+              <a href="tel:+46761913446" className="flex items-center gap-3.5 text-[1.02rem] text-ink transition-colors hover:text-royal">
                 <PhoneIcon className="h-5 w-5 text-royal" />
-                08-123 456 78
+                076-191 34 46
               </a>
               <span className="flex items-center gap-3.5 text-[1.02rem] text-ink">
                 <PinIcon className="h-5 w-5 text-royal" />

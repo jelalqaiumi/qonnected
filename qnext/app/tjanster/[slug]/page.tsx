@@ -6,7 +6,8 @@ import { CtaStrip } from "@/components/Sections";
 import { ServiceIcon, CheckIcon, ArrowRight, ArrowUpRight } from "@/components/Icons";
 import { services, getService } from "@/lib/services";
 import JsonLd from "@/components/JsonLd";
-import { serviceSchema, breadcrumbSchema } from "@/lib/schema";
+import Faq from "@/components/Faq";
+import { serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -56,6 +57,7 @@ export default async function ServicePage({
   return (
     <>
       <JsonLd data={serviceSchema(service)} />
+      <JsonLd data={faqSchema(service.faqs)} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Start", path: "/" },
@@ -127,6 +129,71 @@ export default async function ServicePage({
                 <ArrowRight />
               </Link>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="border-t border-line bg-paper py-[104px] max-md:py-[72px]">
+        <div className="wrap">
+          <Reveal className="mb-14 max-w-[620px]">
+            <span className="eyebrow">Så går det till</span>
+            <h2 className="section-h2">Från första samtal till färdigt</h2>
+          </Reveal>
+          <ol className="grid grid-cols-2 gap-7 max-md:grid-cols-1">
+            {service.process.map((step, i) => (
+              <Reveal key={step.title} delay={i * 70}>
+                <li className="h-full rounded-2xl border border-line bg-white p-[30px]">
+                  <span className="font-mono text-[0.78rem] tracking-[0.12em] text-royal-bright">
+                    Steg {i + 1}
+                  </span>
+                  <h3 className="mt-3 font-display text-[1.2rem] font-semibold tracking-[-0.01em] text-ink">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2.5 text-[0.99rem] leading-relaxed text-muted">
+                    {step.body}
+                  </p>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* PRIS — renderas bara när prisuppgifter är ifyllda */}
+      {service.pricing && (
+        <section className="py-[104px] max-md:py-[72px]">
+          <div className="wrap">
+            <Reveal className="mx-auto max-w-[720px] rounded-[20px] border border-line bg-white p-10 text-center max-md:p-7">
+              <span className="eyebrow">Vad det kostar</span>
+              <p className="mt-5 font-display text-[clamp(2rem,4.4vw,2.9rem)] font-semibold tracking-[-0.02em] text-ink">
+                {service.pricing.to
+                  ? `${service.pricing.from} – ${service.pricing.to}`
+                  : `Från ${service.pricing.from}`}
+              </p>
+              <p className="mx-auto mt-4 max-w-[520px] text-[1.02rem] leading-relaxed text-muted">
+                {service.pricing.note}
+              </p>
+              <Link href="/kontakt" className="btn-primary mt-8">
+                Få en offert
+                <ArrowRight />
+              </Link>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {/* FAQ */}
+      <section className="bg-ink py-20 text-white max-md:py-[72px]">
+        <div className="wrap">
+          <Reveal className="mb-14 max-w-[620px]">
+            <span className="eyebrow eyebrow-light">Vanliga frågor</span>
+            <h2 className="mt-4 font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-white">
+              {service.title} — det du oftast undrar
+            </h2>
+          </Reveal>
+          <Reveal className="mx-auto max-w-[820px]">
+            <Faq items={service.faqs} />
           </Reveal>
         </div>
       </section>

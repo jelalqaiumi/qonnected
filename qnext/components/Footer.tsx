@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { locations } from "@/lib/locations";
 
 export default function Footer() {
   return (
@@ -31,10 +32,20 @@ export default function Footer() {
             </div>
             <div>
               <h5 className="mb-[18px] font-mono text-[0.72rem] uppercase tracking-[0.12em] text-signal-soft">
+                Orter
+              </h5>
+              {locations.map((l) => (
+                <FootLink key={l.slug} href={`/orter/${l.slug}`}>
+                  {l.name === "hela Sverige" ? "Hela Sverige" : l.name}
+                </FootLink>
+              ))}
+            </div>
+            <div>
+              <h5 className="mb-[18px] font-mono text-[0.72rem] uppercase tracking-[0.12em] text-signal-soft">
                 Kontakta oss
               </h5>
-              <FootLink href="mailto:hej@qonnected.se">hej@qonnected.se</FootLink>
-              <FootLink href="tel:+46812345678">08-123 456 78</FootLink>
+              <FootLink href="mailto:info@qonnected.se">info@qonnected.se</FootLink>
+              <FootLink href="tel:+46761913446">076-191 34 46</FootLink>
             </div>
           </div>
         </div>

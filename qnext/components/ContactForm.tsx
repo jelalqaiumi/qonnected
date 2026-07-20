@@ -11,7 +11,7 @@ export default function ContactForm() {
     e.preventDefault();
     const subject = encodeURIComponent(`Förfrågan från ${namn}`);
     const body = encodeURIComponent(`${meddelande}\n\nKontakt: ${epost}`);
-    window.location.href = `mailto:hej@qonnected.se?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@qonnected.se?subject=${subject}&body=${body}`;
   }
 
   return (
