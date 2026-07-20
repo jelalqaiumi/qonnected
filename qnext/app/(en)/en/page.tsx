@@ -74,7 +74,7 @@ export default function HomeEn() {
         <div className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(100deg,rgba(0,9,32,0.94)_0%,rgba(0,9,32,0.7)_45%,rgba(0,9,32,0.4)_100%)]" />
         <div className="wrap relative z-[3] pb-20 pt-[120px]">
           <div className="max-w-[760px]">
-            <span className="eyebrow">Software developer</span>
+            <span className="eyebrow eyebrow-light">Software developer</span>
             <h1 className="mt-[26px] font-display text-[clamp(2.6rem,6.2vw,4.7rem)] font-semibold leading-[1.02] tracking-[-0.03em]">
               We connect{" "}
               <span className="bg-[linear-gradient(100deg,var(--color-signal),var(--color-signal-soft))] bg-clip-text text-transparent">
