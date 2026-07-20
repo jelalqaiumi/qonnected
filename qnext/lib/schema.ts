@@ -56,13 +56,13 @@ export function faqSchema(items: { q: string; a: string }[]) {
   };
 }
 
-export function serviceSchema(service: Service) {
+export function serviceSchema(service: Service, path = `/tjanster/${service.slug}`) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     name: service.title,
     description: service.short,
-    url: absoluteUrl(`/tjanster/${service.slug}`),
+    url: absoluteUrl(path),
     provider: { "@id": organizationId },
     areaServed: [
       { "@type": "AdministrativeArea", name: site.region },

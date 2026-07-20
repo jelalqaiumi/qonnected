@@ -9,7 +9,10 @@ export const metadata: Metadata = {
   title: "Tjänster",
   description:
     "Webbutveckling, fullstackutveckling, bokningssystem, e-handel och SEO — byggt från grunden efter din verksamhet.",
-  alternates: { canonical: "/tjanster" },
+  alternates: {
+    canonical: "/tjanster",
+    languages: { "sv-SE": "/tjanster", "en-GB": "/en/services" },
+  },
 };
 
 export default function TjansterPage() {

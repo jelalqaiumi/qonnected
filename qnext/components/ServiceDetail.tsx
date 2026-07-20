@@ -1,68 +1,36 @@
 import Link from "next/link";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Reveal from "@/components/Reveal";
+import Faq from "@/components/Faq";
+import JsonLd from "@/components/JsonLd";
 import { CtaStrip } from "@/components/Sections";
 import { ServiceIcon, CheckIcon, ArrowRight, ArrowUpRight } from "@/components/Icons";
-import { services, getService } from "@/lib/services";
-import JsonLd from "@/components/JsonLd";
-import Faq from "@/components/Faq";
+import type { Service } from "@/lib/services";
+import { paths, ui, type Locale } from "@/lib/i18n";
 import { serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 
-export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
-}
-
-export const dynamicParams = false;
-
-export async function generateMetadata({
-  params,
+/** Delas av /tjanster/[slug] och /en/services/[slug]. */
+export default function ServiceDetail({
+  service,
+  others,
+  locale,
 }: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const service = getService(slug);
-  if (!service) return { title: "Tjänst" };
-
-  const path = `/tjanster/${service.slug}`;
-  return {
-    title: service.title,
-    description: service.short,
-    alternates: { canonical: path },
-    openGraph: {
-      type: "article",
-      url: path,
-      title: `${service.title} — Qonnected`,
-      description: service.short,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${service.title} — Qonnected`,
-      description: service.short,
-    },
-  };
-}
-
-export default async function ServicePage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
+  service: Service;
+  others: Service[];
+  locale: Locale;
 }) {
-  const { slug } = await params;
-  const service = getService(slug);
-  if (!service) notFound();
-
-  const others = services.filter((s) => s.slug !== service.slug);
+  const t = ui[locale];
+  const p = paths[locale];
+  const base = `${p.services}/${service.slug}`;
 
   return (
     <>
-      <JsonLd data={serviceSchema(service)} />
+      <JsonLd data={serviceSchema(service, base)} />
       <JsonLd data={faqSchema(service.faqs)} />
       <JsonLd
         data={breadcrumbSchema([
-          { name: "Start", path: "/" },
-          { name: "Tjänster", path: "/tjanster" },
-          { name: service.title, path: `/tjanster/${service.slug}` },
+          { name: t.navHome, path: p.home },
+          { name: t.navServices, path: p.services },
+          { name: service.title, path: base },
         ])}
       />
 
@@ -71,17 +39,17 @@ export default async function ServicePage({
         <div className="pointer-events-none absolute -right-20 -top-16 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(70,180,255,0.18)_0%,rgba(70,180,255,0)_70%)]" />
         <div className="wrap relative z-[2]">
           <Link
-            href="/tjanster"
+            href={p.services}
             className="mb-7 inline-flex items-center gap-2 font-mono text-[0.78rem] tracking-[0.08em] text-signal-soft transition-colors hover:text-white"
           >
-            ← Alla tjänster
+            {t.allServices}
           </Link>
           <div className="flex items-center gap-4">
             <span className="grid h-14 w-14 place-items-center rounded-xl border border-signal-soft/30 bg-white/5">
               <ServiceIcon name={service.icon} className="h-7 w-7 text-signal" />
             </span>
             <span className="font-mono text-[0.8rem] tracking-[0.12em] text-signal-soft">
-              {service.num} / Tjänst
+              {service.num} / {locale === "en" ? "Service" : "Tjänst"}
             </span>
           </div>
           <h1 className="mt-6 font-display text-[clamp(2.3rem,5vw,3.6rem)] font-semibold leading-[1.04] tracking-[-0.025em]">
@@ -97,8 +65,8 @@ export default async function ServicePage({
       <section className="py-[104px] max-md:py-[72px]">
         <div className="wrap grid grid-cols-[1.1fr_1fr] gap-16 max-[920px]:grid-cols-1 max-[920px]:gap-12">
           <Reveal>
-            <span className="eyebrow">Det här ingår</span>
-            <h2 className="section-h2 mb-8">Vad du får</h2>
+            <span className="eyebrow">{t.included}</span>
+            <h2 className="section-h2 mb-8">{t.whatYouGet}</h2>
             <ul className="grid gap-4">
               {service.includes.map((item) => (
                 <li key={item} className="flex items-start gap-3.5">
@@ -113,9 +81,9 @@ export default async function ServicePage({
 
           <Reveal delay={80}>
             <div className="rounded-[20px] border border-line bg-white p-9">
-              <span className="eyebrow">Passar dig</span>
+              <span className="eyebrow">{t.goodForYou}</span>
               <h3 className="mb-6 mt-4 font-display text-[1.5rem] font-semibold tracking-[-0.01em] text-ink">
-                Bra för dig som
+                {t.goodForHeading}
               </h3>
               <ul className="grid gap-4">
                 {service.goodFor.map((g) => (
@@ -124,8 +92,8 @@ export default async function ServicePage({
                   </li>
                 ))}
               </ul>
-              <Link href="/kontakt" className="btn-primary mt-9 w-full justify-center">
-                Kontakta oss
+              <Link href={p.contact} className="btn-primary mt-9 w-full justify-center">
+                {t.navContact}
                 <ArrowRight />
               </Link>
             </div>
@@ -147,12 +115,10 @@ export default async function ServicePage({
                 </span>
               </div>
             )}
-            <p className="text-[1.05rem] leading-relaxed text-muted">
-              {service.impact.body}
-            </p>
+            <p className="text-[1.05rem] leading-relaxed text-muted">{service.impact.body}</p>
             {service.impact.source && (
               <p className="mt-5 font-mono text-[0.76rem] tracking-[0.06em] text-muted/70">
-                Källa:{" "}
+                {t.source}{" "}
                 <a
                   href={service.impact.sourceUrl}
                   target="_blank"
@@ -171,22 +137,20 @@ export default async function ServicePage({
       <section className="border-t border-line bg-paper py-[104px] max-md:py-[72px]">
         <div className="wrap">
           <Reveal className="mb-14 max-w-[620px]">
-            <span className="eyebrow">Så går det till</span>
-            <h2 className="section-h2">Från första samtal till färdigt</h2>
+            <span className="eyebrow">{t.processEyebrow}</span>
+            <h2 className="section-h2">{t.processHeading}</h2>
           </Reveal>
           <ol className="grid grid-cols-2 gap-7 max-md:grid-cols-1">
             {service.process.map((step, i) => (
               <Reveal key={step.title} delay={i * 70}>
                 <li className="h-full rounded-2xl border border-line bg-white p-[30px]">
                   <span className="font-mono text-[0.78rem] tracking-[0.12em] text-royal-bright">
-                    Steg {i + 1}
+                    {t.step} {i + 1}
                   </span>
                   <h3 className="mt-3 font-display text-[1.2rem] font-semibold tracking-[-0.01em] text-ink">
                     {step.title}
                   </h3>
-                  <p className="mt-2.5 text-[0.99rem] leading-relaxed text-muted">
-                    {step.body}
-                  </p>
+                  <p className="mt-2.5 text-[0.99rem] leading-relaxed text-muted">{step.body}</p>
                 </li>
               </Reveal>
             ))}
@@ -199,17 +163,17 @@ export default async function ServicePage({
         <section className="py-[104px] max-md:py-[72px]">
           <div className="wrap">
             <Reveal className="mx-auto max-w-[720px] rounded-[20px] border border-line bg-white p-10 text-center max-md:p-7">
-              <span className="eyebrow">Vad det kostar</span>
+              <span className="eyebrow">{t.pricingEyebrow}</span>
               <p className="mt-5 font-display text-[clamp(2rem,4.4vw,2.9rem)] font-semibold tracking-[-0.02em] text-ink">
                 {service.pricing.to
                   ? `${service.pricing.from} – ${service.pricing.to}`
-                  : `Från ${service.pricing.from}`}
+                  : `${t.pricingFrom} ${service.pricing.from}`}
               </p>
               <p className="mx-auto mt-4 max-w-[520px] text-[1.02rem] leading-relaxed text-muted">
                 {service.pricing.note}
               </p>
-              <Link href="/kontakt" className="btn-primary mt-8">
-                Få en offert
+              <Link href={p.contact} className="btn-primary mt-8">
+                {t.getQuote}
                 <ArrowRight />
               </Link>
             </Reveal>
@@ -221,9 +185,9 @@ export default async function ServicePage({
       <section className="bg-ink py-20 text-white max-md:py-[72px]">
         <div className="wrap">
           <Reveal className="mb-14 max-w-[620px]">
-            <span className="eyebrow eyebrow-light">Vanliga frågor</span>
+            <span className="eyebrow eyebrow-light">{t.faqEyebrow}</span>
             <h2 className="mt-4 font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-white">
-              {service.title} — det du oftast undrar
+              {service.title} {t.faqHeadingSuffix}
             </h2>
           </Reveal>
           <Reveal className="mx-auto max-w-[820px]">
@@ -236,20 +200,25 @@ export default async function ServicePage({
       <section className="border-t border-line py-20 max-md:py-[72px]">
         <div className="wrap">
           <Reveal className="mb-10">
-            <span className="eyebrow">Mer jag bygger</span>
-            <h2 className="section-h2">Andra tjänster</h2>
+            <span className="eyebrow">{t.moreIBuild}</span>
+            <h2 className="section-h2">{t.otherServices}</h2>
           </Reveal>
           <div className="grid grid-cols-5 gap-3.5 max-[920px]:grid-cols-2 max-md:grid-cols-1">
             {others.map((o) => (
               <Link
                 key={o.slug}
-                href={`/tjanster/${o.slug}`}
-                className="group flex items-center justify-between gap-2 rounded-xl border border-line bg-white p-4 transition duration-300 hover:-translate-y-1 hover:border-signal"
+                href={`${p.services}/${o.slug}`}
+                className="group rounded-2xl border border-line bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-signal"
               >
-                <span className="font-display text-[0.98rem] font-semibold text-ink">
-                  {o.title}
+                <ServiceIcon
+                  name={o.icon}
+                  className="mb-3 h-8 w-8 text-royal transition-colors group-hover:text-signal"
+                />
+                <div className="text-[0.98rem] font-medium text-ink">{o.title}</div>
+                <span className="mt-2 inline-flex items-center gap-1 font-mono text-[0.72rem] text-royal-bright">
+                  {t.readMore}
+                  <ArrowUpRight />
                 </span>
-                <ArrowUpRight className="h-4 w-4 flex-none text-line transition-colors group-hover:text-signal" />
               </Link>
             ))}
           </div>
@@ -257,9 +226,18 @@ export default async function ServicePage({
       </section>
 
       <CtaStrip
-        title={`Vill du prata ${service.title.toLowerCase()}?`}
-        text="Beskriv vad du behöver så återkommer jag inom en arbetsdag."
-        cta="Kontakta oss"
+        title={
+          locale === "en"
+            ? "Shall we build something together?"
+            : "Ska vi bygga något ihop?"
+        }
+        text={
+          locale === "en"
+            ? "Tell me briefly what you need and I'll come back with a proposal."
+            : "Berätta kort vad du vill få gjort så återkommer jag med ett förslag."
+        }
+        cta={t.navContact}
+        href={p.contact}
       />
     </>
   );

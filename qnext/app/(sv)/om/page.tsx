@@ -6,7 +6,10 @@ export const metadata: Metadata = {
   title: "Om mig",
   description:
     "Systemutvecklare i Östergötland som bygger hemsidor och skräddarsydda system. Lär känna hur jag jobbar.",
-  alternates: { canonical: "/om" },
+  alternates: {
+    canonical: "/om",
+    languages: { "sv-SE": "/om", "en-GB": "/en/about" },
+  },
 };
 
 const values = [
@@ -22,7 +25,7 @@ export default function OmPage() {
       <PageHead
         eyebrow="Om mig"
         title="En systemutvecklare som gillar att bygga saker som funkar"
-        intro="Jag är systemutvecklare i Östergötland. Jag bygger hemsidor, system och AI-lösningar — och håller det enkelt på vägen."
+        intro="Jag är systemutvecklare i Östergötland. Jag bygger hemsidor och skräddarsydda system — och håller det enkelt på vägen."
       />
 
       <section className="py-[104px] max-md:py-[72px]">

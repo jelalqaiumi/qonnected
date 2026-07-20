@@ -6,54 +6,55 @@ import Reveal from "@/components/Reveal";
 import Faq from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { ArrowRight, ServiceIcon } from "@/components/Icons";
-import { services } from "@/lib/services";
+import { servicesEn } from "@/lib/services.en";
+import { paths } from "@/lib/i18n";
 import { faqSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Systemutvecklare i Östergötland — hemsidor & skräddarsydda system",
+  title: "Software developer in Sweden — websites & custom systems",
   description:
-    "Jag bygger hemsidor, webbappar, bokningssystem och e-handel från grunden. Systemutvecklare i Östergötland som arbetar med kunder i hela Sverige.",
+    "I build websites, web apps, booking systems and online shops from scratch. Software developer based in Östergötland, working with clients across Sweden.",
   alternates: {
-    canonical: "/",
+    canonical: "/en",
     languages: { "sv-SE": "/", "en-GB": "/en" },
   },
   openGraph: {
-    title: "Systemutvecklare i Östergötland — hemsidor & skräddarsydda system",
+    title: "Software developer in Sweden — websites & custom systems",
     description:
-      "Jag bygger hemsidor, webbappar, bokningssystem och e-handel från grunden — från idé till drift.",
-    url: "/",
+      "I build websites, web apps, booking systems and online shops from scratch — from idea to running in production.",
+    url: "/en",
   },
 };
 
 const faqs = [
   {
-    q: "Vad kan du hjälpa mig med?",
-    a: "Jag bygger hemsidor, webbappar och skräddarsydda system — inklusive fullstackapplikationer, bokningssystem och integrationer. Är du osäker på vad du behöver hjälper jag dig gärna att reda ut det.",
+    q: "What can you help me with?",
+    a: "I build websites, web apps and custom systems — including fullstack applications, booking systems and integrations. If you're not sure what you need, I'm happy to help you work that out.",
   },
   {
-    q: "Vad kostar det att bygga en hemsida eller ett system?",
-    a: "Det beror helt på omfattningen. En enklare hemsida är en sak, ett större system med databas och inloggning en annan. Kontakta oss med vad du vill bygga så tar jag fram ett tydligt förslag och en offert utan förpliktelser.",
+    q: "What does a website or system cost?",
+    a: "It depends entirely on the scope. A simpler website is one thing, a larger system with a database and logins quite another. Tell me what you want to build and I'll put together a clear proposal and a quote, with no obligation.",
   },
   {
-    q: "Jobbar du med kunder utanför Östergötland?",
-    a: "Ja. Jag utgår från Östergötland men arbetar på distans i hela Norden. Det mesta går utmärkt att sköta digitalt, och vi ses gärna på plats när det behövs.",
+    q: "Do you work with clients outside Östergötland?",
+    a: "Yes. I'm based in Östergötland but work remotely across the Nordics. Most of it is handled perfectly well online, and I'm happy to meet in person when it helps.",
   },
   {
-    q: "Hjälper du till med att synas på Google?",
-    a: "Ja. Jag bygger alltid med prestanda och sökmotorer i åtanke, och kan hjälpa dig med teknisk SEO och lokal synlighet så att ditt företag hittas när kunder söker.",
+    q: "Can you help me show up on Google?",
+    a: "Yes. I always build with performance and search engines in mind, and I can help you with technical SEO and local visibility so your business gets found when customers search.",
   },
   {
-    q: "Äger jag koden och sajten efteråt?",
-    a: "Ja. Det jag bygger är ditt. Du hamnar aldrig i en prenumeration du inte själv har skrivit på för — har vi inte avtalat om löpande drift eller förvaltning finns det inget abonnemang att ta sig ur. Koden kan vidareutvecklas av mig eller någon annan.",
+    q: "Do I own the code and the site afterwards?",
+    a: "Yes. What I build is yours. You'll never end up in a subscription you haven't signed up for — if we haven't agreed on ongoing hosting or maintenance, there's no subscription to get out of. The code can be developed further by me or by someone else.",
   },
   {
-    q: "Hur kommer vi igång?",
-    a: "Enkelt — kontakta oss via kontaktformuläret, mejl eller telefon. Vi tar en förutsättningslös pratstund, går igenom vad du vill uppnå, och sedan sätter jag ihop ett förslag.",
+    q: "How do we get started?",
+    a: "Simply get in touch via the form, email or phone. We'll have an informal conversation, go through what you want to achieve, and then I'll put a proposal together.",
   },
 ];
 
-export default function Home() {
-  const top = services.slice(0, 3);
+export default function HomeEn() {
+  const top = servicesEn.slice(0, 3);
 
   return (
     <>
@@ -61,8 +62,6 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy-deep text-white">
-        {/* Hero-bilden är sidans LCP-element — via next/image serveras den i
-            rätt storlek och format för varje enhet. */}
         <Image
           src="/hero.webp"
           alt=""
@@ -75,22 +74,21 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(100deg,rgba(0,9,32,0.94)_0%,rgba(0,9,32,0.7)_45%,rgba(0,9,32,0.4)_100%)]" />
         <div className="wrap relative z-[3] pb-20 pt-[120px]">
           <div className="max-w-[760px]">
-            <span className="eyebrow">Systemutvecklare</span>
+            <span className="eyebrow">Software developer</span>
             <h1 className="mt-[26px] font-display text-[clamp(2.6rem,6.2vw,4.7rem)] font-semibold leading-[1.02] tracking-[-0.03em]">
-              Vi kopplar ihop{" "}
+              We connect{" "}
               <span className="bg-[linear-gradient(100deg,var(--color-signal),var(--color-signal-soft))] bg-clip-text text-transparent">
-                idéer, system
+                ideas, systems
               </span>{" "}
-              och människor.
+              and people.
             </h1>
             <p className="mt-[26px] max-w-[560px] text-[clamp(1.05rem,1.7vw,1.28rem)] text-[#e7eefc]/80">
-              Systemutvecklare i Östergötland. Jag bygger hemsidor och
-              skräddarsydda system som löser riktiga problem. Genomtänkt,
-              driftsäkert och byggt för att växa i.
+              Software developer in Östergötland, Sweden. I build websites and custom systems
+              that solve real problems. Considered, reliable, and built to grow into.
             </p>
             <div className="mt-[38px] flex flex-wrap gap-4">
-              <Link href="/kontakt" className="btn-primary">
-                Kontakta oss
+              <Link href={paths.en.contact} className="btn-primary">
+                Get in touch
                 <ArrowRight />
               </Link>
             </div>
@@ -102,17 +100,17 @@ export default function Home() {
       <section className="py-[104px] max-md:py-[72px]">
         <div className="wrap">
           <Reveal className="mb-14 max-w-[620px]">
-            <span className="eyebrow">Det här bygger jag</span>
-            <h2 className="section-h2">Tre saker jag gör mest av</h2>
+            <span className="eyebrow">What I build</span>
+            <h2 className="section-h2">Three things I do most of</h2>
             <p className="mt-4 text-[1.08rem] text-muted">
-              Hela bredden hittar du under Tjänster. Det här är det jag oftast får bygga.
+              You'll find the full range under Services. These are the ones I'm asked for most.
             </p>
           </Reveal>
           <div className="grid grid-cols-3 gap-7 max-[920px]:grid-cols-1">
             {top.map((s, i) => (
               <Reveal key={s.slug} delay={i * 80}>
                 <Link
-                  href={`/tjanster/${s.slug}`}
+                  href={`${paths.en.services}/${s.slug}`}
                   className="group block h-full rounded-2xl border border-line bg-white p-[30px] pb-[34px] transition duration-300 hover:-translate-y-1 hover:border-signal hover:shadow-[0_18px_40px_-22px_rgba(6,51,142,0.5)]"
                 >
                   <ServiceIcon
@@ -124,7 +122,7 @@ export default function Home() {
                   </h3>
                   <p className="mt-2.5 text-[0.98rem] text-muted">{s.short}</p>
                   <span className="mt-[18px] inline-flex items-center gap-1.5 font-mono text-[0.76rem] tracking-[0.08em] text-royal-bright">
-                    Läs mer →
+                    Read more →
                   </span>
                 </Link>
               </Reveal>
@@ -137,12 +135,12 @@ export default function Home() {
       <section className="bg-ink py-20 text-white max-md:py-[72px]">
         <div className="wrap">
           <Reveal className="mb-14 max-w-[620px]">
-            <span className="eyebrow eyebrow-light">Vanliga frågor</span>
+            <span className="eyebrow eyebrow-light">Common questions</span>
             <h2 className="mt-4 font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-white">
-              Bra att veta innan vi börjar
+              Worth knowing before we start
             </h2>
             <p className="mt-4 text-[1.08rem] text-[#e7eefc]/70">
-              Här svarar jag på det jag oftast får frågor om. Hittar du inte svaret? Kontakta oss.
+              Here I answer what I'm asked most often. Can't find your answer? Get in touch.
             </p>
           </Reveal>
           <Reveal className="mx-auto max-w-[820px]">
@@ -150,7 +148,6 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
-
     </>
   );
 }

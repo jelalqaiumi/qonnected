@@ -1,16 +1,17 @@
 import { serviceAreas } from "@/lib/locations";
+import { ui, type Locale } from "@/lib/i18n";
 
 /**
  * Ren uppräkning av orter vi tar uppdrag i. Renderas i layouten, direkt
  * ovanför footern, så att den syns längst ner på varje sida. Inga länkar —
  * det här är en faktauppgift, inte navigation.
  */
-export default function ServiceAreas() {
+export default function ServiceAreas({ locale = "sv" }: { locale?: Locale }) {
   return (
     <section className="border-t border-line py-14">
       <div className="wrap text-center">
         <span className="font-mono text-[0.74rem] uppercase tracking-[0.12em] text-royal-bright">
-          Områden vi jobbar i
+          {ui[locale].areasLabel}
         </span>
         <ul className="mx-auto mt-5 flex max-w-[720px] flex-wrap justify-center gap-x-3.5 gap-y-2">
           {serviceAreas.map((area) => (

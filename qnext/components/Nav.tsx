@@ -5,17 +5,24 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { services } from "@/lib/services";
+import { servicesEn } from "@/lib/services.en";
 import { ServiceIcon } from "@/components/Icons";
+import { FlagSE, FlagGB } from "@/components/Flags";
+import { paths, ui, alternatePath, type Locale } from "@/lib/i18n";
 
-const links = [
-  { href: "/", label: "Start" },
-  { href: "/om", label: "Om mig" },
-];
-
-export default function Nav() {
+export default function Nav({ locale = "sv" }: { locale?: Locale }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const t = ui[locale];
+  const p = paths[locale];
+  const list = locale === "en" ? servicesEn : services;
+
+  const links = [
+    { href: p.home, label: t.navHome },
+    { href: p.about, label: t.navAbout },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -29,7 +36,9 @@ export default function Nav() {
   }, [pathname]);
 
   const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+    href === p.home ? pathname === p.home : pathname.startsWith(href);
+
+  const servicesActive = pathname.startsWith(p.services);
 
   return (
     <header
@@ -40,7 +49,7 @@ export default function Nav() {
       }`}
     >
       <div className="wrap relative flex h-[74px] items-center justify-between">
-        <Link href="/" aria-label="Qonnected start" className="relative block h-[26px] w-[170px]">
+        <Link href={p.home} aria-label={t.logoAria} className="relative block h-[26px] w-[170px]">
           <Image
             src="/logo-light.webp"
             alt="Qonnected"
@@ -53,7 +62,7 @@ export default function Nav() {
           />
           <Image
             src="/logo-dark.webp"
-            alt="Qonnected"
+            alt=""
             fill
             sizes="170px"
             className={`object-contain object-left transition-opacity duration-300 ${
@@ -83,14 +92,13 @@ export default function Nav() {
                 <span className="absolute -bottom-2 left-0 right-0 h-0.5 rounded bg-signal" />
               )}
             </Link>
-
-))}
+          ))}
 
           <div className="group relative">
             <Link
-              href="/tjanster"
+              href={p.services}
               className={`relative inline-flex items-center gap-2 text-[0.92rem] font-medium transition-colors ${
-                pathname.startsWith("/tjanster")
+                servicesActive
                   ? scrolled
                     ? "text-royal"
                     : "text-white"
@@ -99,13 +107,9 @@ export default function Nav() {
                   : "text-white/80 hover:text-white"
               }`}
             >
-              Tjänster
-              <span
-                className={`mt-0.5 h-2 w-2 rotate-45 border-b border-r transition-colors ${
-                  scrolled ? "border-current" : "border-current"
-                }`}
-              />
-              {pathname.startsWith("/tjanster") && (
+              {t.navServices}
+              <span className="mt-0.5 h-2 w-2 rotate-45 border-b border-r border-current transition-colors" />
+              {servicesActive && (
                 <span className="absolute -bottom-2 left-0 right-0 h-0.5 rounded bg-signal" />
               )}
             </Link>
@@ -113,10 +117,10 @@ export default function Nav() {
             <div className="invisible absolute left-1/2 top-full mt-5 w-[310px] -translate-x-1/2 overflow-hidden rounded-[18px] border border-[#d8dfeb] bg-white p-3 opacity-0 shadow-[0_18px_38px_-20px_rgba(10,20,48,0.35)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
               <div className="absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 border-l border-t border-[#d8dfeb] bg-white" />
               <div className="relative grid gap-1.5">
-                {services.map((service) => (
+                {list.map((service) => (
                   <Link
                     key={service.slug}
-                    href={`/tjanster/${service.slug}`}
+                    href={`${p.services}/${service.slug}`}
                     className="flex w-full min-w-0 items-center gap-3 rounded-2xl px-2.5 py-2.5 transition-colors hover:bg-[#f3f7ff]"
                   >
                     <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#e8f0ff] text-[#0b2f74] shadow-[inset_0_0_0_1px_rgba(11,47,116,0.08)]">
@@ -132,22 +136,23 @@ export default function Nav() {
           </div>
         </nav>
 
-        {/* Höger sida: knapp (desktop) + mobilmeny */}
+        {/* Höger sida: språkväljare + knapp (desktop) + mobilmeny */}
         <div className="flex items-center gap-3">
+          <LangSwitch locale={locale} pathname={pathname} scrolled={scrolled} />
           <Link
-            href="/kontakt"
+            href={p.contact}
             className="hidden rounded-full bg-signal px-5 py-2.5 text-[0.9rem] font-semibold text-navy-deep transition duration-200 hover:-translate-y-0.5 hover:bg-[#5fc0ff] hover:shadow-[0_10px_26px_-8px_rgba(70,180,255,0.7)] md:inline-flex"
           >
-            Kontakta oss
+            {t.navContact}
           </Link>
           <button
-            aria-label="Meny"
+            aria-label={t.menu}
             onClick={() => setOpen((v) => !v)}
             className="relative z-[60] flex w-[30px] flex-col gap-[5px] md:hidden"
           >
-            <span className={`h-0.5 w-full bg-white transition-all duration-300 ${open ? "translate-y-[7px] rotate-45" : ""} ${scrolled && !open ? "bg-ink" : "bg-white"}`} />
+            <span className={`h-0.5 w-full transition-all duration-300 ${open ? "translate-y-[7px] rotate-45 bg-white" : ""} ${scrolled && !open ? "bg-ink" : "bg-white"}`} />
             <span className={`h-0.5 w-full transition-all duration-300 ${open ? "opacity-0" : "opacity-100"} ${scrolled && !open ? "bg-ink" : "bg-white"}`} />
-            <span className={`h-0.5 w-full bg-white transition-all duration-300 ${open ? "-translate-y-[7px] -rotate-45" : ""} ${scrolled && !open ? "bg-ink" : "bg-white"}`} />
+            <span className={`h-0.5 w-full transition-all duration-300 ${open ? "-translate-y-[7px] -rotate-45 bg-white" : ""} ${scrolled && !open ? "bg-ink" : "bg-white"}`} />
           </button>
         </div>
       </div>
@@ -164,14 +169,14 @@ export default function Nav() {
           </Link>
         ))}
         <div className="space-y-3">
-          <Link href="/tjanster" className="text-[1.1rem] font-medium text-white">
-            Tjänster
+          <Link href={p.services} className="text-[1.1rem] font-medium text-white">
+            {t.navServices}
           </Link>
           <div className="grid gap-2 border-l border-signal-soft/20 pl-4">
-            {services.map((service) => (
+            {list.map((service) => (
               <Link
                 key={service.slug}
-                href={`/tjanster/${service.slug}`}
+                href={`${p.services}/${service.slug}`}
                 className="text-[0.94rem] text-white/80 transition-colors hover:text-white"
               >
                 {service.title}
@@ -179,10 +184,75 @@ export default function Nav() {
             ))}
           </div>
         </div>
-        <Link href="/kontakt" className="mt-2 w-fit rounded-full bg-signal px-5 py-2.5 text-[0.95rem] font-semibold text-navy-deep">
-          Kontakta oss
+        <Link href={p.contact} className="mt-2 w-fit rounded-full bg-signal px-5 py-2.5 text-[0.95rem] font-semibold text-navy-deep">
+          {t.navContact}
         </Link>
       </div>
     </header>
+  );
+}
+
+/**
+ * Visar båda språken med flagga så att besökaren ser vilket som är aktivt.
+ * Länkarna måste vara <a> och inte <Link> — språken har separata root-layouter,
+ * så bytet kräver en riktig sidladdning för att <html lang> ska hinna växlas.
+ */
+function LangSwitch({
+  locale,
+  pathname,
+  scrolled,
+}: {
+  locale: Locale;
+  pathname: string;
+  scrolled: boolean;
+}) {
+  const options = [
+    { code: "sv" as Locale, Flag: FlagSE, label: "Svenska", short: "SV" },
+    { code: "en" as Locale, Flag: FlagGB, label: "English", short: "EN" },
+  ];
+
+  return (
+    <div
+      className={`flex items-center gap-0.5 rounded-full border p-0.5 transition-colors ${
+        scrolled ? "border-mist bg-white/60" : "border-white/25 bg-white/10"
+      }`}
+    >
+      {options.map(({ code, Flag, label, short }) => {
+        const active = code === locale;
+        const cls = `flex items-center gap-1.5 rounded-full px-2 py-1 font-mono text-[0.7rem] tracking-[0.08em] transition-all ${
+          active
+            ? scrolled
+              ? "bg-royal text-white"
+              : "bg-white/90 text-navy-deep"
+            : scrolled
+            ? "text-muted hover:text-royal"
+            : "text-white/70 hover:text-white"
+        }`;
+
+        // Aktivt språk är ingen länk — den skulle bara leda till samma sida.
+        if (active) {
+          return (
+            <span key={code} className={cls} aria-current="true">
+              <Flag className={active ? "" : "opacity-60"} />
+              {short}
+            </span>
+          );
+        }
+
+        return (
+          <a
+            key={code}
+            href={alternatePath(pathname, code)}
+            hrefLang={code}
+            aria-label={code === "en" ? "Switch to English" : "Byt till svenska"}
+            title={label}
+            className={cls}
+          >
+            <Flag className="opacity-75 transition-opacity hover:opacity-100" />
+            {short}
+          </a>
+        );
+      })}
+    </div>
   );
 }

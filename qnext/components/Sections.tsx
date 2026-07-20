@@ -32,10 +32,12 @@ export function CtaStrip({
   title,
   text,
   cta = "Kontakta oss",
+  href = "/kontakt",
 }: {
   title: string;
   text: string;
   cta?: string;
+  href?: string;
 }) {
   return (
     <section className="py-20 max-md:py-[72px]">
@@ -47,7 +49,7 @@ export function CtaStrip({
             </h3>
             <p className="mt-2 text-muted">{text}</p>
           </div>
-          <Link href="/kontakt" className="btn-dark">
+          <Link href={href} className="btn-dark">
             {cta}
             <ArrowRight />
           </Link>
@@ -81,16 +83,21 @@ export function SwedenCoverageSection() {
   );
 }
 
-export function BeliefBand() {
+export function BeliefBand({ locale = "sv" }: { locale?: "sv" | "en" }) {
+  const en = locale === "en";
   return (
     <section className="bg-[radial-gradient(120%_140%_at_15%_0%,var(--color-royal)_0%,var(--color-navy)_55%,var(--color-navy-deep)_100%)] text-white">
       <div className="wrap py-[100px]">
         <Reveal>
-          <span className="eyebrow eyebrow-light">Så tänker jag</span>
+          <span className="eyebrow eyebrow-light">
+            {en ? "How I see it" : "Så tänker jag"}
+          </span>
           <p className="mt-6 block max-w-[860px] font-display text-[clamp(1.6rem,3.4vw,2.5rem)] font-medium leading-[1.22] tracking-[-0.02em]">
-            Teknik är aldrig målet. Jag bygger saker så att{" "}
+            {en ? "Technology is never the point. I build things so that " : "Teknik är aldrig målet. Jag bygger saker så att "}
             <span className="text-signal">
-              människor får mer tid till sådant som bara människor kan göra.
+              {en
+                ? "people get more time for the things only people can do."
+                : "människor får mer tid till sådant som bara människor kan göra."}
             </span>
           </p>
           <div className="mt-8 font-mono text-[0.8rem] tracking-[0.1em] text-signal-soft">

@@ -1,56 +1,26 @@
 import Link from "next/link";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Reveal from "@/components/Reveal";
 import Faq from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { PageHead, CtaStrip } from "@/components/Sections";
 import { ServiceIcon, ArrowUpRight } from "@/components/Icons";
-import { locations, getLocation } from "@/lib/locations";
-import { getService } from "@/lib/services";
+import type { Location } from "@/lib/locations";
+import type { Service } from "@/lib/services";
+import { paths, ui, type Locale } from "@/lib/i18n";
 import { faqSchema, breadcrumbSchema, localServiceSchema } from "@/lib/schema";
 
-export function generateStaticParams() {
-  return locations.map((l) => ({ slug: l.slug }));
-}
-
-export const dynamicParams = false;
-
-export async function generateMetadata({
-  params,
+/** Delas av /orter/[slug] och /en/areas/[slug]. */
+export default function LocationDetail({
+  location,
+  highlighted,
+  locale,
 }: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const location = getLocation(slug);
-  if (!location) return { title: "Ort" };
-
-  const path = `/orter/${location.slug}`;
-  return {
-    title: location.title,
-    description: location.description,
-    alternates: { canonical: path },
-    openGraph: {
-      type: "article",
-      url: path,
-      title: location.title,
-      description: location.description,
-    },
-  };
-}
-
-export default async function LocationPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
+  location: Location;
+  highlighted: Service[];
+  locale: Locale;
 }) {
-  const { slug } = await params;
-  const location = getLocation(slug);
-  if (!location) notFound();
-
-  const highlighted = location.highlight
-    .map((s) => getService(s))
-    .filter((s) => s !== undefined);
+  const t = ui[locale];
+  const p = paths[locale];
 
   return (
     <>
@@ -58,16 +28,12 @@ export default async function LocationPage({
       <JsonLd data={faqSchema(location.faqs)} />
       <JsonLd
         data={breadcrumbSchema([
-          { name: "Start", path: "/" },
-          { name: location.title, path: `/orter/${location.slug}` },
+          { name: t.navHome, path: p.home },
+          { name: location.title, path: `${p.areas}/${location.slug}` },
         ])}
       />
 
-      <PageHead
-        eyebrow={location.name}
-        title={location.title}
-        intro={location.intro}
-      />
+      <PageHead eyebrow={location.name} title={location.title} intro={location.intro} />
 
       {/* BRÖDTEXT */}
       <section className="py-[104px] max-md:py-[72px]">
@@ -89,16 +55,20 @@ export default async function LocationPage({
       <section className="border-t border-line bg-paper py-[104px] max-md:py-[72px]">
         <div className="wrap">
           <Reveal className="mb-14 max-w-[620px]">
-            <span className="eyebrow">Vanligast här</span>
+            <span className="eyebrow">
+              {locale === "en" ? "Most common here" : "Vanligast här"}
+            </span>
             <h2 className="section-h2">
-              Det jag oftast bygger {location.inName}
+              {locale === "en"
+                ? `What I mostly build ${location.inName}`
+                : `Det jag oftast bygger ${location.inName}`}
             </h2>
           </Reveal>
           <div className="grid grid-cols-3 gap-7 max-[920px]:grid-cols-1">
             {highlighted.map((s, i) => (
               <Reveal key={s.slug} delay={i * 80}>
                 <Link
-                  href={`/tjanster/${s.slug}`}
+                  href={`${p.services}/${s.slug}`}
                   className="group block h-full rounded-2xl border border-line bg-white p-[30px] transition duration-300 hover:-translate-y-1 hover:border-signal hover:shadow-[0_18px_40px_-22px_rgba(6,51,142,0.5)]"
                 >
                   <ServiceIcon
@@ -110,7 +80,7 @@ export default async function LocationPage({
                   </h3>
                   <p className="mt-2.5 text-[0.98rem] text-muted">{s.short}</p>
                   <span className="mt-[18px] inline-flex items-center gap-1.5 font-mono text-[0.76rem] tracking-[0.08em] text-royal-bright">
-                    Läs mer
+                    {t.readMore}
                     <ArrowUpRight />
                   </span>
                 </Link>
@@ -124,9 +94,11 @@ export default async function LocationPage({
       <section className="bg-ink py-20 text-white max-md:py-[72px]">
         <div className="wrap">
           <Reveal className="mb-14 max-w-[620px]">
-            <span className="eyebrow eyebrow-light">Vanliga frågor</span>
+            <span className="eyebrow eyebrow-light">{t.faqEyebrow}</span>
             <h2 className="mt-4 font-display text-[clamp(1.9rem,3.6vw,2.7rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-white">
-              Att jobba med mig {location.inName}
+              {locale === "en"
+                ? `Working with me ${location.inName}`
+                : `Att jobba med mig ${location.inName}`}
             </h2>
           </Reveal>
           <Reveal className="mx-auto max-w-[820px]">
@@ -136,8 +108,18 @@ export default async function LocationPage({
       </section>
 
       <CtaStrip
-        title={`Ska vi bygga något ${location.inName}?`}
-        text="Berätta kort vad du vill få gjort så återkommer jag med ett förslag."
+        title={
+          locale === "en"
+            ? `Shall we build something ${location.inName}?`
+            : `Ska vi bygga något ${location.inName}?`
+        }
+        text={
+          locale === "en"
+            ? "Tell me briefly what you need and I'll come back with a proposal."
+            : "Berätta kort vad du vill få gjort så återkommer jag med ett förslag."
+        }
+        cta={t.navContact}
+        href={p.contact}
       />
     </>
   );

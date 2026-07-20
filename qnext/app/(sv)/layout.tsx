@@ -1,31 +1,12 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Hanken_Grotesk, Space_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ServiceAreas from "@/components/ServiceAreas";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/site";
+import { fontVariables } from "@/lib/fonts";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-space-grotesk",
-  display: "swap",
-});
-const hanken = Hanken_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-hanken",
-  display: "swap",
-});
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-space-mono",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -34,7 +15,10 @@ export const metadata: Metadata = {
   },
   description: site.description,
   metadataBase: new URL(site.url),
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: { "sv-SE": "/", "en-GB": "/en" },
+  },
   openGraph: {
     type: "website",
     locale: site.locale,
@@ -60,23 +44,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function SwedishLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="sv"
-      className={`${spaceGrotesk.variable} ${hanken.variable} ${spaceMono.variable}`}
-    >
+    <html lang="sv" className={fontVariables}>
       <body>
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
-        <Nav />
+        <Nav locale="sv" />
         <main>{children}</main>
-        <ServiceAreas />
-        <Footer />
+        <ServiceAreas locale="sv" />
+        <Footer locale="sv" />
       </body>
     </html>
   );
