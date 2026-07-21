@@ -52,7 +52,7 @@ export default function ContactPageEn() {
               </a>
               <span className="flex items-center gap-3.5 text-[1.02rem] text-ink">
                 <PinIcon className="h-5 w-5 text-royal" />
-                Östergötland, Sweden
+                Motala, Sweden
               </span>
             </div>
           </Reveal>

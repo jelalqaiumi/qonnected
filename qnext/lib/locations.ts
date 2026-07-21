@@ -88,7 +88,7 @@ export const locations: Location[] = [
     inName: "i Norrköping",
     title: "Webbutveckling & systemutveckling i Norrköping",
     description:
-      "Hemsidor, webbshoppar och skräddarsydda system åt företag i Norrköping. Systemutvecklare från Östergötland med möten på plats när det behövs.",
+      "Hemsidor, webbshoppar och skräddarsydda system åt företag i Norrköping. Systemutvecklare från Motala med möten på plats när det behövs.",
     intro:
       "Jag bygger hemsidor, webbshoppar och verksamhetssystem åt företag i Norrköping. Från grunden och anpassat efter hur ni jobbar — inte hämtat ur en mall.",
     body: [
@@ -118,9 +118,9 @@ export const locations: Location[] = [
     inName: "i hela Sverige",
     title: "Systemutvecklare på distans — uppdrag i hela Sverige",
     description:
-      "Jag bygger hemsidor och skräddarsydda system på distans åt kunder i hela Sverige. Utgår från Östergötland, arbetar digitalt — enkelt att komma igång.",
+      "Jag bygger hemsidor och skräddarsydda system på distans åt kunder i hela Sverige. Utgår från Motala, arbetar digitalt — enkelt att komma igång.",
     intro:
-      "Jag utgår från Östergötland men tar uppdrag i hela Sverige. Det mesta i ett utvecklingsprojekt sköts ändå digitalt, och avståndet spelar mindre roll än att vi förstår varandra.",
+      "Jag utgår från Motala men tar uppdrag i hela Sverige. Det mesta i ett utvecklingsprojekt sköts ändå digitalt, och avståndet spelar mindre roll än att vi förstår varandra.",
     body: [
       "Jag tänker inte påstå att jag har kontor i din stad. Det har jag inte. Däremot fungerar utvecklingsarbete på distans riktigt bra, förutsatt att man är tydlig med hur samarbetet går till.",
       "Så här ser det ut i praktiken: vi har ett första samtal över video där vi går igenom vad du behöver. Du får en offert med tidplan. Under bygget ligger sajten på en testadress som du kan öppna när du vill och kommentera på — du behöver inte vänta på en stor avtäckning i slutet. Vi stämmer av löpande, oftare i början.",

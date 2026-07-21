@@ -6,7 +6,7 @@ import { paths } from "@/lib/i18n";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Software developer in Östergötland, Sweden, building websites and custom systems. A look at how I work.",
+    "Software developer in Motala, Sweden, building websites and custom systems. A look at how I work.",
   alternates: {
     canonical: "/en/about",
     languages: { "sv-SE": "/om", "en-GB": "/en/about" },
@@ -26,7 +26,7 @@ export default function AboutPage() {
       <PageHead
         eyebrow="About"
         title="A developer who likes building things that work"
-        intro="I'm a software developer based in Östergötland, Sweden. I build websites and custom systems — and keep things simple along the way."
+        intro="I'm a software developer based in Motala, Sweden. I build websites and custom systems — and keep things simple along the way."
       />
 
       <section className="py-[104px] max-md:py-[72px]">

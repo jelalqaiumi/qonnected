@@ -10,7 +10,7 @@ import { organizationSchema, websiteSchema } from "@/lib/schema";
 
 const englishTagline = "Software developer building websites and custom systems";
 const englishDescription =
-  "Software developer based in Östergötland, Sweden. I build websites, web apps and custom systems — from idea to running in production.";
+  "Software developer based in Motala, Sweden. I build websites, web apps and custom systems — from idea to running in production.";
 
 export const metadata: Metadata = {
   title: {

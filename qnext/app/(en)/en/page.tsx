@@ -13,7 +13,7 @@ import { faqSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Software developer in Sweden — websites & custom systems",
   description:
-    "I build websites, web apps, booking systems and online shops from scratch. Software developer based in Östergötland, working with clients across Sweden.",
+    "I build websites, web apps, booking systems and online shops from scratch. Software developer based in Motala, working with clients across Sweden.",
   alternates: {
     canonical: "/en",
     languages: { "sv-SE": "/", "en-GB": "/en" },
@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: "Do you work with clients outside Östergötland?",
-    a: "Yes. I'm based in Östergötland but work remotely across the Nordics. Most of it is handled perfectly well online, and I'm happy to meet in person when it helps.",
+    a: "Yes. I'm based in Motala but work remotely across the Nordics. Most of it is handled perfectly well online, and I'm happy to meet in person when it helps.",
   },
   {
     q: "Can you help me show up on Google?",
@@ -83,7 +83,7 @@ export default function HomeEn() {
               and people.
             </h1>
             <p className="mt-[26px] max-w-[560px] text-[clamp(1.05rem,1.7vw,1.28rem)] text-[#e7eefc]/80">
-              Software developer in Östergötland, Sweden. I build websites and custom systems
+              Software developer in Motala, Sweden. I build websites and custom systems
               that solve real problems. Considered, reliable, and built to grow into.
             </p>
             <div className="mt-[38px] flex flex-wrap gap-4">

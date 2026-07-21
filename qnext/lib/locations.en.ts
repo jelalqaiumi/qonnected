@@ -71,7 +71,7 @@ export const locationsEn: Location[] = [
     inName: "in Norrköping",
     title: "Web & software development in Norrköping",
     description:
-      "Websites, online shops and custom systems for businesses in Norrköping. Software developer from Östergötland, meeting in person when it helps.",
+      "Websites, online shops and custom systems for businesses in Norrköping. Software developer from Motala, meeting in person when it helps.",
     intro:
       "I build websites, online shops and operations systems for businesses in Norrköping. From scratch and shaped around how you work — not pulled from a template.",
     body: [
@@ -101,9 +101,9 @@ export const locationsEn: Location[] = [
     inName: "across Sweden",
     title: "Remote software developer — projects across Sweden",
     description:
-      "I build websites and custom systems remotely for clients across Sweden. Based in Östergötland, working online — straightforward to get started.",
+      "I build websites and custom systems remotely for clients across Sweden. Based in Motala, working online — straightforward to get started.",
     intro:
-      "I'm based in Östergötland but take on work across Sweden. Most of a development project happens online anyway, and distance matters less than whether we understand each other.",
+      "I'm based in Motala but take on work across Sweden. Most of a development project happens online anyway, and distance matters less than whether we understand each other.",
     body: [
       "I'm not going to claim I have an office in your city. I don't. What I will say is that development work runs well remotely, provided you're clear about how the collaboration actually works.",
       "In practice it looks like this: we have a first conversation over video and go through what you need. You get a quote with a timeline. During the build, the site sits on a test address you can open whenever you like and comment on — you don't have to wait for a big reveal at the end. We check in as we go, more often at the start.",

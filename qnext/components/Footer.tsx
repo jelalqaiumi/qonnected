@@ -48,7 +48,7 @@ export default function Footer({ locale = "sv" }: { locale?: Locale }) {
               {t.privacy}
             </Link>
             <span>
-              {locale === "en" ? "Östergötland · Sweden" : "Östergötland · Sverige"}
+              {locale === "en" ? "Motala · Sweden" : "Motala · Sverige"}
             </span>
           </div>
         </div>

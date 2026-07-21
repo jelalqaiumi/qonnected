@@ -10,15 +10,15 @@ import { services } from "@/lib/services";
 import { faqSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Systemutvecklare i Östergötland — hemsidor & skräddarsydda system",
+  title: "Systemutvecklare i Motala — hemsidor & skräddarsydda system",
   description:
-    "Jag bygger hemsidor, webbappar, bokningssystem och e-handel från grunden. Systemutvecklare i Östergötland som arbetar med kunder i hela Sverige.",
+    "Jag bygger hemsidor, webbappar, bokningssystem och e-handel från grunden. Systemutvecklare i Motala som arbetar med kunder i hela Sverige.",
   alternates: {
     canonical: "/",
     languages: { "sv-SE": "/", "en-GB": "/en" },
   },
   openGraph: {
-    title: "Systemutvecklare i Östergötland — hemsidor & skräddarsydda system",
+    title: "Systemutvecklare i Motala — hemsidor & skräddarsydda system",
     description:
       "Jag bygger hemsidor, webbappar, bokningssystem och e-handel från grunden — från idé till drift.",
     url: "/",
@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: "Jobbar du med kunder utanför Östergötland?",
-    a: "Ja. Jag utgår från Östergötland men arbetar på distans i hela Norden. Det mesta går utmärkt att sköta digitalt, och vi ses gärna på plats när det behövs.",
+    a: "Ja. Jag utgår från Motala men arbetar på distans i hela Norden. Det mesta går utmärkt att sköta digitalt, och vi ses gärna på plats när det behövs.",
   },
   {
     q: "Hjälper du till med att synas på Google?",
@@ -84,7 +84,7 @@ export default function Home() {
               och människor.
             </h1>
             <p className="mt-[26px] max-w-[560px] text-[clamp(1.05rem,1.7vw,1.28rem)] text-[#e7eefc]/80">
-              Systemutvecklare i Östergötland. Jag bygger hemsidor och
+              Systemutvecklare i Motala. Jag bygger hemsidor och
               skräddarsydda system som löser riktiga problem. Genomtänkt,
               driftsäkert och byggt för att växa i.
             </p>
