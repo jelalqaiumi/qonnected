@@ -43,6 +43,8 @@ export type Service = {
   faqs: ServiceFaq[];
   pricing?: Pricing;
   impact: Impact;
+  /** Valfri bakgrundsbild i sidhuvudet. Utan den visas den blå gradienten. */
+  heroImage?: string;
 };
 
 export const services: Service[] = [
@@ -128,6 +130,7 @@ export const services: Service[] = [
     short:
       "Kompletta applikationer med både frontend och backend — databas, logik och gränssnitt i ett.",
     icon: "code",
+    heroImage: "/fullstack.webp",
     intro:
       "Jag bygger hela applikationen, inte bara ytan. Frontend som användaren möter, backend som gör jobbet och databasen som håller ordning på allt — byggt för att hänga ihop och hålla över tid.",
     includes: [
@@ -186,7 +189,10 @@ export const services: Service[] = [
       },
     ],
     impact: {
-      body: "Här sätter jag medvetet ingen procentsiffra. Vad ett eget system är värt beror helt på hur mycket manuellt arbete ni gör idag — dubbelinmatning, information som bor i tre olika filer, tid som går åt till att leta. Den räkningen gör vi tillsammans innan ni bestämmer er, med era egna siffror i stället för någon annans. Sedan bygger jag hela lösningen: gränssnitt, logik, databas och drift.",
+      body:
+        `En applikation som fungerar smidigt och håller ordning på informationen gör att ni kan fokusera på det ni är bra på i stället för att jaga data. Jag bygger både gränssnittet och logiken bakom, så att det hänger ihop och går att bygga vidare på och finns kvar när något behöver justeras.
+`,
+    
     },
   },
   {
@@ -270,6 +276,7 @@ export const services: Service[] = [
     short:
       "Webbshop med betalning, produkter och lager — byggd för att sälja och enkel att sköta.",
     icon: "cart",
+    heroImage: "/ehandel.webp",
     intro:
       "Jag bygger webbutiker från grunden, anpassade efter vad du säljer. Med smidig kassa, säkra betalningar och koll på lagret — så att kunden handlar enkelt och du slipper krångel bakom kulisserna.",
     includes: [
@@ -283,6 +290,10 @@ export const services: Service[] = [
       "Butiker som vill koppla ihop webb och fysisk försäljning",
       "Verksamheter som vuxit ur en enkel, färdig webbshopstjänst",
     ],
+    pricing: {
+      from: "10 000 kr",
+      note: "Startpriset gäller en butik med ett avgränsat sortiment. Priset styrs av hur många produkter du säljer, om de har varianter i storlek och färg, vilka betalsätt som ska kopplas på, och om lager och ordrar ska hänga ihop med system du redan använder. Du får en fast offert innan vi börjar.",
+    },
     process: [
       {
         title: "Sortiment och struktur",

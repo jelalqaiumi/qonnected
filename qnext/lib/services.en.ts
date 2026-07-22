@@ -88,6 +88,7 @@ export const servicesEn: Service[] = [
     short:
       "Complete applications with both frontend and backend — database, logic and interface in one.",
     icon: "code",
+    heroImage: "/fullstack.webp",
     intro:
       "I build the whole application, not just the surface. The frontend your users meet, the backend that does the work, and the database that keeps track of it all — built to hold together and to last.",
     includes: [
@@ -230,6 +231,7 @@ export const servicesEn: Service[] = [
     short:
       "An online shop with payment, products and stock — built to sell and simple to run.",
     icon: "cart",
+    heroImage: "/ehandel.webp",
     intro:
       "I build online shops from scratch, shaped around what you sell. With a smooth checkout, secure payments and control of your stock — so customers buy easily and you avoid the mess behind the scenes.",
     includes: [
@@ -243,6 +245,10 @@ export const servicesEn: Service[] = [
       "Shops wanting to connect their physical and online sales",
       "Businesses that have outgrown a simple off-the-shelf shop service",
     ],
+    pricing: {
+      from: "SEK 10,000",
+      note: "The starting price covers a shop with a focused range. What moves it is how many products you sell, whether they come in sizes and colours, which payment methods go in, and whether stock and orders need to connect to systems you already use. You get a fixed quote before we start.",
+    },
     process: [
       {
         title: "Range and structure",

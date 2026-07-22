@@ -20,22 +20,13 @@ export async function generateMetadata({
   const location = getLocation(slug);
   if (!location) return { title: "Ort" };
 
-  const path = `/orter/${location.slug}`;
-  const enPath = `/en/areas/${areaSlugMap[location.slug]}`;
-
+  // Sidorna ska inte nås av någon — varken via länk eller sökresultat.
+  // De ligger kvar i koden ifall de ska tas i bruk igen. Tas de i bruk måste
+  // robots-blocket bort och sidorna läggas tillbaka i sitemap.ts.
   return {
     title: location.title,
     description: location.description,
-    alternates: {
-      canonical: path,
-      languages: { "sv-SE": path, "en-GB": enPath },
-    },
-    openGraph: {
-      type: "article",
-      url: path,
-      title: location.title,
-      description: location.description,
-    },
+    robots: { index: false, follow: false },
   };
 }
 

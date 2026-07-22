@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import Faq from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
@@ -35,8 +36,26 @@ export default function ServiceDetail({
       />
 
       {/* HEAD */}
-      <section className="relative overflow-hidden bg-[radial-gradient(120%_160%_at_85%_0%,#062a6e_0%,var(--color-navy)_48%,var(--color-navy-deep)_100%)] px-0 pb-[76px] pt-[150px] text-white max-md:pb-[60px] max-md:pt-[126px]">
-        <div className="pointer-events-none absolute -right-20 -top-16 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(70,180,255,0.18)_0%,rgba(70,180,255,0)_70%)]" />
+      <section className="relative mx-4 mt-4 overflow-hidden rounded-[30px] bg-[radial-gradient(120%_160%_at_85%_0%,#062a6e_0%,var(--color-navy)_48%,var(--color-navy-deep)_100%)] px-0 pb-[76px] pt-[150px] text-white max-md:mx-3 max-md:mt-3 max-md:rounded-[22px] max-md:pb-[60px] max-md:pt-[126px]">
+        {service.heroImage ? (
+          <>
+            {/* Bild + mörk gradient så att den vita rubriktexten förblir läsbar. */}
+            <Image
+              src={service.heroImage}
+              alt=""
+              fill
+              priority
+              quality={90}
+              sizes="100vw"
+              className="z-0 object-cover object-center"
+            />
+            {/* Neutralt mörkt filter (inte blått) som tonar av mot höger — håller
+                den vita rubriktexten läsbar utan att lägga en färgton på bilden. */}
+            <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(100deg,rgba(0,0,0,0.7)_0%,rgba(0,0,0,0.42)_55%,rgba(0,0,0,0.12)_100%)]" />
+          </>
+        ) : (
+          <div className="pointer-events-none absolute -right-20 -top-16 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(70,180,255,0.18)_0%,rgba(70,180,255,0)_70%)]" />
+        )}
         <div className="wrap relative z-[2]">
           <Link
             href={p.services}

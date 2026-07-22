@@ -38,26 +38,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const svAreas: MetadataRoute.Sitemap = locations.map((l) => ({
-    url: absoluteUrl(`${paths.sv.areas}/${l.slug}`),
-    lastModified,
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
-
-  const enAreas: MetadataRoute.Sitemap = locationsEn.map((l) => ({
-    url: absoluteUrl(`${paths.en.areas}/${l.slug}`),
-    lastModified,
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
-
-  return [
-    ...svPages,
-    ...svServices,
-    ...svAreas,
-    ...enPages,
-    ...enServices,
-    ...enAreas,
-  ];
+  // Ortssidorna under /orter och /en/areas är medvetet utelämnade. De ska inte
+  // nås av besökare och är satta till noindex — då ska de inte heller ligga i
+  // sitemapen, som är en lista över sidor vi vill ha indexerade.
+  return [...svPages, ...svServices, ...enPages, ...enServices];
 }

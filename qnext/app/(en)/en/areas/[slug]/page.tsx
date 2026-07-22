@@ -20,22 +20,12 @@ export async function generateMetadata({
   const location = getLocationEn(slug);
   if (!location) return { title: "Area" };
 
-  const path = `/en/areas/${location.slug}`;
-  const svPath = `/orter/${areaSlugMapReverse[location.slug]}`;
-
+  // Se kommentaren i app/(sv)/orter/[slug]/page.tsx — sidorna är avsiktligt
+  // undantagna från både navigation och sökresultat.
   return {
     title: location.title,
     description: location.description,
-    alternates: {
-      canonical: path,
-      languages: { "sv-SE": svPath, "en-GB": path },
-    },
-    openGraph: {
-      type: "article",
-      url: path,
-      title: location.title,
-      description: location.description,
-    },
+    robots: { index: false, follow: false },
   };
 }
 

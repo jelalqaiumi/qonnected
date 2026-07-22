@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: "Do you work with clients outside Östergötland?",
-    a: "Yes. I'm based in Motala but work remotely across the Nordics. Most of it is handled perfectly well online, and I'm happy to meet in person when it helps.",
+    a: "Yes. I'm based in Motala but work remotely across Sweden. Most of it is handled perfectly well online, and I'm happy to meet in person when it helps.",
   },
   {
     q: "Can you help me show up on Google?",
@@ -54,8 +54,6 @@ const faqs = [
 ];
 
 export default function HomeEn() {
-  const top = servicesEn.slice(0, 3);
-
   return (
     <>
       <JsonLd data={faqSchema(faqs)} />
@@ -101,13 +99,13 @@ export default function HomeEn() {
         <div className="wrap">
           <Reveal className="mb-14 max-w-[620px]">
             <span className="eyebrow">What I build</span>
-            <h2 className="section-h2">Three things I do most of</h2>
+            <h2 className="section-h2">Things I do most of</h2>
             <p className="mt-4 text-[1.08rem] text-muted">
-              You'll find the full range under Services. These are the ones I'm asked for most.
+              Each service has its own page with process, pricing and common questions.
             </p>
           </Reveal>
-          <div className="grid grid-cols-3 gap-7 max-[920px]:grid-cols-1">
-            {top.map((s, i) => (
+          <div className="grid grid-cols-3 gap-7 max-[920px]:grid-cols-2 max-md:grid-cols-1">
+            {servicesEn.map((s, i) => (
               <Reveal key={s.slug} delay={i * 80}>
                 <Link
                   href={`${paths.en.services}/${s.slug}`}

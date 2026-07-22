@@ -11,6 +11,8 @@ const nextConfig = {
 	images: {
 		// Serve modern formats — mindre filer ger bättre LCP och därmed ranking.
 		formats: ["image/avif", "image/webp"],
+		// 75 är standard; 90 tillåts för header-bilder med fin detalj (kodtext).
+		qualities: [75, 90],
 	},
 };
 export default nextConfig;

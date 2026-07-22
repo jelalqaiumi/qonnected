@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: "Jobbar du med kunder utanför Östergötland?",
-    a: "Ja. Jag utgår från Motala men arbetar på distans i hela Norden. Det mesta går utmärkt att sköta digitalt, och vi ses gärna på plats när det behövs.",
+    a: "Ja. Jag utgår från Motala men arbetar på distans i hela Sverige. Det mesta går utmärkt att sköta digitalt, och vi ses gärna på plats när det behövs.",
   },
   {
     q: "Hjälper du till med att synas på Google?",
@@ -53,8 +53,6 @@ const faqs = [
 ];
 
 export default function Home() {
-  const top = services.slice(0, 3);
-
   return (
     <>
       <JsonLd data={faqSchema(faqs)} />
@@ -103,13 +101,13 @@ export default function Home() {
         <div className="wrap">
           <Reveal className="mb-14 max-w-[620px]">
             <span className="eyebrow">Det här bygger jag</span>
-            <h2 className="section-h2">Tre saker jag gör mest av</h2>
+            <h2 className="section-h2">Saker jag gör mest av</h2>
             <p className="mt-4 text-[1.08rem] text-muted">
-              Hela bredden hittar du under Tjänster. Det här är det jag oftast får bygga.
+              Varje tjänst har en egen sida med process, priser och vanliga frågor.
             </p>
           </Reveal>
-          <div className="grid grid-cols-3 gap-7 max-[920px]:grid-cols-1">
-            {top.map((s, i) => (
+          <div className="grid grid-cols-3 gap-7 max-[920px]:grid-cols-2 max-md:grid-cols-1">
+            {services.map((s, i) => (
               <Reveal key={s.slug} delay={i * 80}>
                 <Link
                   href={`/tjanster/${s.slug}`}
