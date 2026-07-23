@@ -39,7 +39,7 @@
     --color-paper: #070d1a;
     --color-mist: #1a2540;
     --color-line: #24324f;
-    --color-muted: #a7b4cf;
+    --color-muted: #b3c0d9;
   }
 
   body {
@@ -50,8 +50,22 @@
     text-rendering: optimizeLegibility;
   }
 
+  html[data-theme="dark"] body {
+    background-image: radial-gradient(circle at 50% -20%, #121d36 0%, #070d1a 55%);
+    background-attachment: fixed;
+  }
+
   html[data-theme="dark"] .bg-white {
     background-color: #0f1728 !important;
+  }
+
+  html[data-theme="dark"] .hero-overlay {
+    background: linear-gradient(
+      100deg,
+      rgba(2, 8, 20, 0.9) 0%,
+      rgba(2, 8, 20, 0.58) 46%,
+      rgba(2, 8, 20, 0.3) 100%
+    ) !important;
   }
 
   html[data-theme="dark"] .text-ink {
@@ -97,6 +111,35 @@
 
   html[data-theme="dark"] .shadow-\[0_10px_26px_-8px_rgba\(70\,180\,255\,0\.7\)\] {
     box-shadow: 0 10px 26px -10px rgba(80, 180, 255, 0.5) !important;
+  }
+
+  html[data-theme="dark"] .btn-primary {
+    background: #73ccff;
+    color: #06152f;
+  }
+
+  html[data-theme="dark"] .btn-primary:hover {
+    background: #86d4ff;
+  }
+
+  html[data-theme="dark"] .btn-dark {
+    background: #133267;
+    color: #ecf3ff;
+  }
+
+  html[data-theme="dark"] .btn-dark:hover {
+    background: #1a4183;
+  }
+
+  html[data-theme="dark"] .btn-ghost {
+    border-color: rgba(168, 220, 255, 0.55);
+    color: #f1f7ff;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  html[data-theme="dark"] .btn-ghost:hover {
+    border-color: #86d4ff;
+    background: rgba(134, 212, 255, 0.14);
   }
 
   ::selection {

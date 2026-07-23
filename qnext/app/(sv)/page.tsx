@@ -70,7 +70,7 @@ export default function Home() {
           className="z-0 object-cover object-center"
         />
         <NetworkCanvas />
-        <div className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(100deg,rgba(0,9,32,0.94)_0%,rgba(0,9,32,0.7)_45%,rgba(0,9,32,0.4)_100%)]" />
+        <div className="hero-overlay pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(100deg,rgba(0,9,32,0.94)_0%,rgba(0,9,32,0.7)_45%,rgba(0,9,32,0.4)_100%)]" />
         <div className="wrap relative z-[3] pb-20 pt-[120px]">
           <div className="max-w-[760px]">
             <span className="eyebrow eyebrow-light">Systemutvecklare</span>

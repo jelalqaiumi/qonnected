@@ -51,7 +51,7 @@ export default function ServiceDetail({
             />
             {/* Neutralt mörkt filter (inte blått) som tonar av mot höger — håller
                 den vita rubriktexten läsbar utan att lägga en färgton på bilden. */}
-            <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(100deg,rgba(0,0,0,0.7)_0%,rgba(0,0,0,0.42)_55%,rgba(0,0,0,0.12)_100%)]" />
+            <div className="hero-overlay pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(100deg,rgba(0,0,0,0.7)_0%,rgba(0,0,0,0.42)_55%,rgba(0,0,0,0.12)_100%)]" />
             <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(100%_70%_at_80%_0%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_65%)]" />
             {service.heroNote && (
               <div className="pointer-events-none absolute bottom-5 right-5 z-[2] hidden rounded-xl border border-white/25 bg-black/35 px-4 py-2.5 text-[0.78rem] font-medium text-white/90 backdrop-blur md:block">
