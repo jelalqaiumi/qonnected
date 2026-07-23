@@ -47,11 +47,17 @@ export default function ServiceDetail({
               priority
               quality={90}
               sizes="100vw"
-              className="z-0 object-cover object-center"
+              className="z-0 scale-[1.03] object-cover object-center brightness-[0.92] contrast-[1.05]"
             />
             {/* Neutralt mörkt filter (inte blått) som tonar av mot höger — håller
                 den vita rubriktexten läsbar utan att lägga en färgton på bilden. */}
             <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(100deg,rgba(0,0,0,0.7)_0%,rgba(0,0,0,0.42)_55%,rgba(0,0,0,0.12)_100%)]" />
+            <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(100%_70%_at_80%_0%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_65%)]" />
+            {service.heroNote && (
+              <div className="pointer-events-none absolute bottom-5 right-5 z-[2] hidden rounded-xl border border-white/25 bg-black/35 px-4 py-2.5 text-[0.78rem] font-medium text-white/90 backdrop-blur md:block">
+                {service.heroNote}
+              </div>
+            )}
           </>
         ) : (
           <div className="pointer-events-none absolute -right-20 -top-16 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(70,180,255,0.18)_0%,rgba(70,180,255,0)_70%)]" />
@@ -120,6 +126,64 @@ export default function ServiceDetail({
         </div>
       </section>
 
+      {/* PERSONLIG INTRO */}
+      {service.personal && (
+        <section className="pb-[104px] max-md:pb-[72px]">
+          <div className="wrap">
+            <Reveal className="grid grid-cols-[1fr_1.2fr] gap-10 max-md:grid-cols-1">
+              <div>
+                <span className="eyebrow">{t.personalEyebrow}</span>
+                <h2 className="section-h2 mt-4 max-w-[520px]">{service.personal.title}</h2>
+              </div>
+              <div className="rounded-2xl border border-line bg-white p-8 max-md:p-6">
+                <div className="grid gap-4 text-[1rem] leading-relaxed text-muted">
+                  {service.personal.body.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {/* CASE */}
+      {service.cases && service.cases.length > 0 && (
+        <section className="border-t border-line bg-paper py-[104px] max-md:py-[72px]">
+          <div className="wrap">
+            <Reveal className="mb-12 max-w-[700px]">
+              <span className="eyebrow">{t.caseEyebrow}</span>
+              <h2 className="section-h2">{t.caseHeading}</h2>
+            </Reveal>
+            <div className="grid gap-6 md:grid-cols-3">
+              {service.cases.map((c, i) => (
+                <Reveal key={c.title} delay={i * 70}>
+                  <article className="h-full rounded-2xl border border-line bg-white p-7">
+                    <h3 className="font-display text-[1.22rem] font-semibold tracking-[-0.01em] text-ink">
+                      {c.title}
+                    </h3>
+                    <div className="mt-5 space-y-4 text-[0.98rem] leading-relaxed text-muted">
+                      <p>
+                        <span className="font-semibold text-ink">{t.caseChallenge}: </span>
+                        {c.challenge}
+                      </p>
+                      <p>
+                        <span className="font-semibold text-ink">{t.caseSolution}: </span>
+                        {c.solution}
+                      </p>
+                      <p>
+                        <span className="font-semibold text-ink">{t.caseOutcome}: </span>
+                        {c.outcome}
+                      </p>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* VARFÖR DET SPELAR ROLL — branschsiffror med källa, inga resultatlöften */}
       <section className="pb-[104px] max-md:pb-[72px]">
         <div className="wrap">
@@ -163,9 +227,16 @@ export default function ServiceDetail({
             {service.process.map((step, i) => (
               <Reveal key={step.title} delay={i * 70}>
                 <li className="h-full rounded-2xl border border-line bg-white p-[30px]">
-                  <span className="font-mono text-[0.78rem] tracking-[0.12em] text-royal-bright">
-                    {t.step} {i + 1}
-                  </span>
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <span className="font-mono text-[0.78rem] tracking-[0.12em] text-royal-bright">
+                      {t.step} {i + 1}
+                    </span>
+                    {step.time && (
+                      <span className="rounded-full bg-signal/12 px-3 py-1 font-mono text-[0.7rem] tracking-[0.08em] text-royal">
+                        {t.eta}: {step.time}
+                      </span>
+                    )}
+                  </div>
                   <h3 className="mt-3 font-display text-[1.2rem] font-semibold tracking-[-0.01em] text-ink">
                     {step.title}
                   </h3>
@@ -188,6 +259,12 @@ export default function ServiceDetail({
                   ? `${service.pricing.from} – ${service.pricing.to}`
                   : `${t.pricingFrom} ${service.pricing.from}`}
               </p>
+              {service.pricing.typical && (
+                <p className="mx-auto mt-4 max-w-[560px] text-[0.95rem] text-muted">
+                  <span className="font-semibold text-ink">{t.typicalScope}: </span>
+                  {service.pricing.typical}
+                </p>
+              )}
               <p className="mx-auto mt-4 max-w-[520px] text-[1.02rem] leading-relaxed text-muted">
                 {service.pricing.note}
               </p>
@@ -196,6 +273,70 @@ export default function ServiceDetail({
                 <ArrowRight />
               </Link>
             </Reveal>
+          </div>
+        </section>
+      )}
+
+      {/* TRYGGHET + PASSFORM */}
+      {(service.trust || service.fit) && (
+        <section className="border-t border-line py-[104px] max-md:py-[72px]">
+          <div className="wrap grid grid-cols-[1.15fr_1fr] gap-8 max-[920px]:grid-cols-1">
+            {service.trust && (
+              <Reveal>
+                <div className="rounded-[20px] border border-line bg-white p-8 max-md:p-6">
+                  <span className="eyebrow">{t.trustEyebrow}</span>
+                  <h2 className="mt-4 font-display text-[1.8rem] font-semibold tracking-[-0.02em] text-ink">
+                    {t.trustHeading}
+                  </h2>
+                  <ul className="mt-6 grid gap-3.5">
+                    {service.trust.map((item) => (
+                      <li key={item} className="flex items-start gap-3.5 text-[1rem] text-muted">
+                        <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center rounded-full bg-signal/15 text-royal">
+                          <CheckIcon className="h-3.5 w-3.5" />
+                        </span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            )}
+
+            {service.fit && (
+              <Reveal delay={80}>
+                <div className="rounded-[20px] border border-line bg-white p-8 max-md:p-6">
+                  <span className="eyebrow">{t.fitEyebrow}</span>
+                  <h2 className="mt-4 font-display text-[1.8rem] font-semibold tracking-[-0.02em] text-ink">
+                    {t.fitHeading}
+                  </h2>
+
+                  <p className="mt-6 text-[0.8rem] font-semibold tracking-[0.08em] text-royal-bright">
+                    {t.fitGood}
+                  </p>
+                  <ul className="mt-3 grid gap-3">
+                    {service.fit.good.map((item) => (
+                      <li key={item} className="border-l-2 border-signal pl-3 text-[0.98rem] text-muted">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className="mt-7 text-[0.8rem] font-semibold tracking-[0.08em] text-[#9f5a62]">
+                    {t.fitBad}
+                  </p>
+                  <ul className="mt-3 grid gap-3">
+                    {service.fit.bad.map((item) => (
+                      <li
+                        key={item}
+                        className="border-l-2 border-[#d6a1a8] pl-3 text-[0.98rem] text-muted"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            )}
           </div>
         </section>
       )}
@@ -252,8 +393,8 @@ export default function ServiceDetail({
         }
         text={
           locale === "en"
-            ? "Tell me briefly what you need and I'll come back with a proposal."
-            : "Berätta kort vad du vill få gjort så återkommer jag med ett förslag."
+            ? `Tell me briefly what you need and I'll come back with a proposal${service.responseTime ? ` (${service.responseTime})` : "."}`
+            : `Berätta kort vad du vill få gjort så återkommer jag med ett förslag${service.responseTime ? ` (${service.responseTime})` : "."}`
         }
         cta={t.navContact}
         href={p.contact}

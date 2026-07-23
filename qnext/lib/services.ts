@@ -1,4 +1,4 @@
-export type ProcessStep = { title: string; body: string };
+export type ProcessStep = { title: string; body: string; time?: string };
 
 export type ServiceFaq = { q: string; a: string };
 
@@ -11,8 +11,27 @@ export type Pricing = {
   from: string;
   /** Övre delen av spannet, t.ex. "40 000 kr". Utelämna för rena "från"-priser. */
   to?: string;
+  /** Exempel på projekt som brukar ligga i spannet. */
+  typical?: string;
   /** Kort förklaring av vad som påverkar priset. */
   note: string;
+};
+
+export type PersonalPitch = {
+  title: string;
+  body: string[];
+};
+
+export type ServiceCase = {
+  title: string;
+  challenge: string;
+  solution: string;
+  outcome: string;
+};
+
+export type Fit = {
+  good: string[];
+  bad: string[];
 };
 
 /**
@@ -45,6 +64,14 @@ export type Service = {
   impact: Impact;
   /** Valfri bakgrundsbild i sidhuvudet. Utan den visas den blå gradienten. */
   heroImage?: string;
+  /** Kort text ovanpå hero-bilden för mer kontext. */
+  heroNote?: string;
+  personal?: PersonalPitch;
+  cases?: ServiceCase[];
+  trust?: string[];
+  fit?: Fit;
+  /** Kort svarstidslöfte i sista CTA-rutan. */
+  responseTime?: string;
 };
 
 export const services: Service[] = [
@@ -131,8 +158,64 @@ export const services: Service[] = [
       "Kompletta applikationer med både frontend och backend — databas, logik och gränssnitt i ett.",
     icon: "code",
     heroImage: "/fullstack.webp",
+    heroNote: "Från idé till drift: gränssnitt, logik och data i samma leverans.",
     intro:
       "Jag bygger hela applikationen, inte bara ytan. Frontend som användaren möter, backend som gör jobbet och databasen som håller ordning på allt — byggt för att hänga ihop och hålla över tid.",
+    personal: {
+      title: "Hej, jag heter Qaium och bygger fullstacklösningar som faktiskt används i vardagen.",
+      body: [
+        "Jag jobbar nära dig som beställare, utan mellanhänder. Vi börjar i hur ni arbetar idag och bygger runt det i stället för att pressa in er i ett standardflöde.",
+        "Du får tydliga avstämningar, läsbar kod och en lösning som går att lämna över. Målet är alltid samma sak: mindre manuellt arbete och bättre kontroll.",
+      ],
+    },
+    cases: [
+      {
+        title: "När orderflödet sitter i kalkylark",
+        challenge:
+          "Sälj, lager och leverans låg i olika filer, vilket gav dubbelregistrering och missade uppdateringar.",
+        solution:
+          "Ett vanligt upplägg är att bygga ett internt webbgränssnitt med central databas, rollstyrd inloggning och tydlig orderstatus.",
+        outcome:
+          "Resultatet brukar bli bättre överblick i realtid och mindre tid på manuell avstämning varje vecka.",
+      },
+      {
+        title: "När bokningar saknar överblick",
+        challenge:
+          "Bokningar sköttes via mejl och telefon, vilket gav krockar och svårt att planera bemanning.",
+        solution:
+          "Ett vanligt upplägg är ett bokningsflöde med regler för tillgänglighet, adminvy och automatiska bekräftelser.",
+        outcome:
+          "Det brukar ge färre krockar, snabbare administration och tydligare planering av personal och resurser.",
+      },
+      {
+        title: "När en kundportal behöver struktur",
+        challenge:
+          "Kunder skickade in underlag i olika format och ärenden tappades bort mellan system.",
+        solution:
+          "Ett vanligt upplägg är en portal med inloggning, filuppladdning och koppling till befintligt ärendeflöde.",
+        outcome:
+          "Det brukar skapa mer förutsägbar leverans och kortare ledtid från underlag till färdigt beslut.",
+      },
+    ],
+    trust: [
+      "Du äger alltid koden och all data efter leverans.",
+      "Kodbasen dokumenteras så att den kan tas över av andra utvecklare.",
+      "Backup, loggning och grundläggande övervakning sätts upp vid driftstart.",
+      "Behörigheter och säker hantering av användardata byggs in från start.",
+    ],
+    fit: {
+      good: [
+        "Ni har ett manuellt arbetsflöde som kostar tid varje vecka.",
+        "Ni behöver en lösning som passar er process, inte en färdig mall.",
+        "Ni vill kunna bygga vidare med fler funktioner stegvis.",
+      ],
+      bad: [
+        "Ni behöver bara en enkel informationssida utan inloggning eller dataflöden.",
+        "Ni vill ha billigast möjliga snabbfix utan plan för förvaltning.",
+        "Ni har inte möjlighet att avsätta tid för korta avstämningar under projektet.",
+      ],
+    },
+    responseTime: "Jag återkommer inom 24h på vardagar.",
     includes: [
       "Frontend och backend byggt från grunden och anpassat efter era behov",
       "Databas som håller ordning på er information på ett säkert sätt",
@@ -146,23 +229,29 @@ export const services: Service[] = [
     ],
     pricing: {
       from: "20 000 kr",
+      typical:
+        "Internt verksamhetsstöd, kundportal eller bokningsflöde med inloggning och databas.",
       note: "Startpriset gäller en avgränsad applikation med ett tydligt syfte. Priset styrs av hur många funktioner som ska in, hur komplex datamodellen är och om det behövs inloggning, behörigheter eller kopplingar till andra system. Du får en fast offert innan vi börjar.",
     },
     process: [
       {
         title: "Vi kartlägger flödet",
+        time: "1-3 dagar",
         body: "Vi går igenom hur arbetet faktiskt går till hos er idag — vem som gör vad, var informationen finns och var det skaver. Det är det som avgör hur applikationen ska byggas, inte tvärtom.",
       },
       {
         title: "Datamodell och struktur",
+        time: "2-5 dagar",
         body: "Jag bestämmer hur informationen ska lagras och hänga ihop innan bygget drar igång. Den delen är svår att ändra i efterhand, så den är värd att göra rätt från början.",
       },
       {
         title: "Bygge i etapper",
+        time: "2-6 veckor",
         body: "Vi tar den viktigaste funktionen först och får den att fungera skarpt, sedan bygger vi vidare därifrån. Du ser resultat tidigt och kan styra om medan det fortfarande är enkelt.",
       },
       {
         title: "Driftsättning och förvaltning",
+        time: "1-3 dagar + löpande",
         body: "Applikationen sätts i drift med säkerhetskopior och övervakning på plats. Sedan hjälper jag till löpande eller lämnar över till er — beroende på vad ni vill.",
       },
     ],
