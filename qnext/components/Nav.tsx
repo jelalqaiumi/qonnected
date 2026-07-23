@@ -14,6 +14,7 @@ export default function Nav({ locale = "sv" }: { locale?: Locale }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   const t = ui[locale];
   const p = paths[locale];
@@ -35,10 +36,27 @@ export default function Nav({ locale = "sv" }: { locale?: Locale }) {
     setOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initial = saved === "dark" || saved === "light" ? saved : prefersDark ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", initial);
+    setTheme(initial);
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    setTheme(next);
+  };
+
   const isActive = (href: string) =>
     href === p.home ? pathname === p.home : pathname.startsWith(href);
 
   const servicesActive = pathname.startsWith(p.services);
+  const lightLogoVisible = !scrolled || theme === "dark";
+  const darkLogoVisible = scrolled && theme !== "dark";
 
   return (
     <header
@@ -57,7 +75,7 @@ export default function Nav({ locale = "sv" }: { locale?: Locale }) {
             priority
             sizes="170px"
             className={`object-contain object-left transition-opacity duration-300 ${
-              scrolled ? "opacity-0" : "opacity-100"
+              lightLogoVisible ? "opacity-100" : "opacity-0"
             }`}
           />
           <Image
@@ -66,7 +84,7 @@ export default function Nav({ locale = "sv" }: { locale?: Locale }) {
             fill
             sizes="170px"
             className={`object-contain object-left transition-opacity duration-300 ${
-              scrolled ? "opacity-100" : "opacity-0"
+              darkLogoVisible ? "opacity-100" : "opacity-0"
             }`}
           />
         </Link>
@@ -138,6 +156,12 @@ export default function Nav({ locale = "sv" }: { locale?: Locale }) {
 
         {/* Höger sida: språkväljare + knapp (desktop) + mobilmeny */}
         <div className="flex items-center gap-3">
+          <ThemeToggleButton
+            theme={theme}
+            scrolled={scrolled}
+            locale={locale}
+            onToggle={toggleTheme}
+          />
           <LangSwitch locale={locale} pathname={pathname} scrolled={scrolled} />
           <Link
             href={p.contact}
@@ -163,6 +187,32 @@ export default function Nav({ locale = "sv" }: { locale?: Locale }) {
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
+        <button
+          type="button"
+          onClick={toggleTheme}
+          className="inline-flex w-fit items-center gap-2 rounded-full border border-signal-soft/30 bg-white/10 px-3 py-1.5 text-[0.8rem] text-white"
+          aria-label={
+            locale === "en"
+              ? theme === "dark"
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+              : theme === "dark"
+              ? "Byt till ljust läge"
+              : "Byt till mörkt läge"
+          }
+          title={
+            locale === "en"
+              ? theme === "dark"
+                ? "Light mode"
+                : "Dark mode"
+              : theme === "dark"
+              ? "Ljust läge"
+              : "Mörkt läge"
+          }
+        >
+          {theme === "dark" ? <SunIcon className="h-4 w-4" /> : <MoonIcon className="h-4 w-4" />}
+          <span>{theme === "dark" ? (locale === "en" ? "Light" : "Ljust") : locale === "en" ? "Dark" : "Morkt"}</span>
+        </button>
         {links.map((l) => (
           <Link key={l.href} href={l.href} className="text-[1.1rem] font-medium text-white">
             {l.label}
@@ -189,6 +239,78 @@ export default function Nav({ locale = "sv" }: { locale?: Locale }) {
         </Link>
       </div>
     </header>
+  );
+}
+
+function ThemeToggleButton({
+  theme,
+  scrolled,
+  locale,
+  onToggle,
+}: {
+  theme: "light" | "dark";
+  scrolled: boolean;
+  locale: Locale;
+  onToggle: () => void;
+}) {
+  const toDark = theme !== "dark";
+
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      className={`grid h-9 w-9 place-items-center rounded-full border transition-colors ${
+        scrolled ? "border-mist bg-white/65 text-ink hover:bg-white" : "border-white/25 bg-white/10 text-white hover:bg-white/15"
+      }`}
+      aria-label={
+        locale === "en"
+          ? toDark
+            ? "Switch to dark mode"
+            : "Switch to light mode"
+          : toDark
+          ? "Byt till morkt lage"
+          : "Byt till ljust lage"
+      }
+      title={
+        locale === "en"
+          ? toDark
+            ? "Dark mode"
+            : "Light mode"
+          : toDark
+          ? "Morkt lage"
+          : "Ljust lage"
+      }
+    >
+      {theme === "dark" ? <SunIcon className="h-4.5 w-4.5" /> : <MoonIcon className="h-4.5 w-4.5" />}
+    </button>
+  );
+}
+
+function SunIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
+      <path
+        d="M12 2.8v2.2M12 19v2.2M21.2 12H19M5 12H2.8M18.5 5.5l-1.6 1.6M7.1 16.9l-1.6 1.6M18.5 18.5l-1.6-1.6M7.1 7.1 5.5 5.5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function MoonIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M20 13.2A8.4 8.4 0 1 1 10.8 4a7 7 0 1 0 9.2 9.2z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 

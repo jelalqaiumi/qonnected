@@ -27,6 +27,21 @@
   html {
     scroll-behavior: smooth;
   }
+
+  html[data-theme="dark"] {
+    --color-ink: #e8efff;
+    --color-navy: #0a1224;
+    --color-navy-deep: #070d1a;
+    --color-royal: #86a7ff;
+    --color-royal-bright: #9cb7ff;
+    --color-signal: #66c4ff;
+    --color-signal-soft: #a8dcff;
+    --color-paper: #070d1a;
+    --color-mist: #1a2540;
+    --color-line: #24324f;
+    --color-muted: #a7b4cf;
+  }
+
   body {
     background-color: var(--color-paper);
     color: var(--color-ink);
@@ -34,6 +49,56 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
+
+  html[data-theme="dark"] .bg-white {
+    background-color: #0f1728 !important;
+  }
+
+  html[data-theme="dark"] .text-ink {
+    color: var(--color-ink) !important;
+  }
+
+  html[data-theme="dark"] .text-muted {
+    color: var(--color-muted) !important;
+  }
+
+  html[data-theme="dark"] .border-line,
+  html[data-theme="dark"] .border-mist {
+    border-color: var(--color-line) !important;
+  }
+
+  html[data-theme="dark"] .bg-paper {
+    background-color: var(--color-paper) !important;
+  }
+
+  html[data-theme="dark"] .bg-ink {
+    background-color: #030916 !important;
+  }
+
+  html[data-theme="dark"] .hover\:bg-\[\#f3f7ff\]:hover {
+    background-color: #111c31 !important;
+  }
+
+  html[data-theme="dark"] .hover\:text-royal:hover {
+    color: var(--color-signal) !important;
+  }
+
+  html[data-theme="dark"] .shadow-\[0_18px_38px_-20px_rgba\(10\,20\,48\,0\.35\)\] {
+    box-shadow: 0 18px 38px -20px rgba(0, 0, 0, 0.75) !important;
+  }
+
+  html[data-theme="dark"] .shadow-\[0_18px_40px_-22px_rgba\(6\,51\,142\,0\.5\)\] {
+    box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  html[data-theme="dark"] .shadow-\[0_14px_34px_-10px_rgba\(70\,180\,255\,0\.75\)\] {
+    box-shadow: 0 14px 34px -12px rgba(80, 180, 255, 0.55) !important;
+  }
+
+  html[data-theme="dark"] .shadow-\[0_10px_26px_-8px_rgba\(70\,180\,255\,0\.7\)\] {
+    box-shadow: 0 10px 26px -10px rgba(80, 180, 255, 0.5) !important;
+  }
+
   ::selection {
     background: var(--color-signal);
     color: var(--color-navy-deep);

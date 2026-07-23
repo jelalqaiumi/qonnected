@@ -36,7 +36,7 @@ export default function ServiceDetail({
       />
 
       {/* HEAD */}
-      <section className="relative mx-4 mt-4 overflow-hidden rounded-[30px] bg-[radial-gradient(120%_160%_at_85%_0%,#062a6e_0%,var(--color-navy)_48%,var(--color-navy-deep)_100%)] px-0 pb-[76px] pt-[150px] text-white max-md:mx-3 max-md:mt-3 max-md:rounded-[22px] max-md:pb-[60px] max-md:pt-[126px]">
+      <section className="relative mx-auto mt-4 w-[calc(100%-2rem)] max-w-[1280px] overflow-hidden rounded-[30px] bg-[radial-gradient(120%_160%_at_85%_0%,#062a6e_0%,var(--color-navy)_48%,var(--color-navy-deep)_100%)] px-0 pb-[76px] pt-[150px] text-white max-md:mt-3 max-md:w-[calc(100%-1.5rem)] max-md:rounded-[22px] max-md:pb-[60px] max-md:pt-[126px]">
         {service.heroImage ? (
           <>
             {/* Bild + mörk gradient så att den vita rubriktexten förblir läsbar. */}
@@ -46,8 +46,8 @@ export default function ServiceDetail({
               fill
               priority
               quality={90}
-              sizes="100vw"
-              className="z-0 scale-[1.03] object-cover object-center brightness-[0.92] contrast-[1.05]"
+              sizes="(max-width: 768px) calc(100vw - 1.5rem), (max-width: 1320px) calc(100vw - 2rem), 1280px"
+              className="z-0 object-cover object-center brightness-[0.92] contrast-[1.05]"
             />
             {/* Neutralt mörkt filter (inte blått) som tonar av mot höger — håller
                 den vita rubriktexten läsbar utan att lägga en färgton på bilden. */}
@@ -227,16 +227,9 @@ export default function ServiceDetail({
             {service.process.map((step, i) => (
               <Reveal key={step.title} delay={i * 70}>
                 <li className="h-full rounded-2xl border border-line bg-white p-[30px]">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <span className="font-mono text-[0.78rem] tracking-[0.12em] text-royal-bright">
-                      {t.step} {i + 1}
-                    </span>
-                    {step.time && (
-                      <span className="rounded-full bg-signal/12 px-3 py-1 font-mono text-[0.7rem] tracking-[0.08em] text-royal">
-                        {t.eta}: {step.time}
-                      </span>
-                    )}
-                  </div>
+                  <span className="font-mono text-[0.78rem] tracking-[0.12em] text-royal-bright">
+                    {t.step} {i + 1}
+                  </span>
                   <h3 className="mt-3 font-display text-[1.2rem] font-semibold tracking-[-0.01em] text-ink">
                     {step.title}
                   </h3>

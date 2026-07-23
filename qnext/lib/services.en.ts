@@ -18,17 +18,14 @@ export const servicesEn: Service[] = [
     includes: [
       "Design and code shaped around your business, not a stock template",
       "Responsive — works just as well on a phone as on a desktop",
-      "Built for speed and for search engines to understand",
       "A clean structure that you or I can build on later",
     ],
     goodFor: [
       "You who need a new site, or want to replace an ageing one",
-      "You who want something you own instead of a locked page builder",
       "Businesses that want to look professional online",
     ],
     pricing: {
       from: "SEK 10,000",
-      to: "SEK 45,000",
       note: "Where you land in that range depends on how many pages the site has, whether the content and images already exist, and whether you need a database, logins or other functionality behind the scenes. You get a fixed quote before we start — no surprises on the invoice.",
     },
     process: [

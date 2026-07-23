@@ -50,7 +50,15 @@ export default function SwedishLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="sv" className={fontVariables}>
+    <html lang="sv" className={fontVariables} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}",
+          }}
+        />
+      </head>
       <body>
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />

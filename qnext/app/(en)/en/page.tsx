@@ -59,13 +59,13 @@ export default function HomeEn() {
       <JsonLd data={faqSchema(faqs)} />
 
       {/* HERO */}
-      <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy-deep text-white">
+      <section className="relative mx-auto mt-4 flex min-h-[100svh] w-[calc(100%-2rem)] max-w-[1280px] items-center overflow-hidden rounded-[30px] bg-navy-deep text-white max-md:mt-3 max-md:w-[calc(100%-1.5rem)] max-md:rounded-[22px]">
         <Image
           src="/hero.webp"
           alt=""
           fill
           priority
-          sizes="100vw"
+          sizes="(max-width: 768px) calc(100vw - 1.5rem), (max-width: 1320px) calc(100vw - 2rem), 1280px"
           className="z-0 object-cover object-center"
         />
         <NetworkCanvas />

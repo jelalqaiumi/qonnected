@@ -157,7 +157,7 @@ export const services: Service[] = [
     short:
       "Kompletta applikationer med både frontend och backend — databas, logik och gränssnitt i ett.",
     icon: "code",
-    heroImage: "/fullstack.webp",
+    heroImage: "/fullstackbild.webp",
     heroNote: "Från idé till drift: gränssnitt, logik och data i samma leverans.",
     intro:
       "Jag bygger hela applikationen, inte bara ytan. Frontend som användaren möter, backend som gör jobbet och databasen som håller ordning på allt — byggt för att hänga ihop och hålla över tid.",
@@ -236,22 +236,18 @@ export const services: Service[] = [
     process: [
       {
         title: "Vi kartlägger flödet",
-        time: "1-3 dagar",
         body: "Vi går igenom hur arbetet faktiskt går till hos er idag — vem som gör vad, var informationen finns och var det skaver. Det är det som avgör hur applikationen ska byggas, inte tvärtom.",
       },
       {
         title: "Datamodell och struktur",
-        time: "2-5 dagar",
         body: "Jag bestämmer hur informationen ska lagras och hänga ihop innan bygget drar igång. Den delen är svår att ändra i efterhand, så den är värd att göra rätt från början.",
       },
       {
         title: "Bygge i etapper",
-        time: "2-6 veckor",
         body: "Vi tar den viktigaste funktionen först och får den att fungera skarpt, sedan bygger vi vidare därifrån. Du ser resultat tidigt och kan styra om medan det fortfarande är enkelt.",
       },
       {
         title: "Driftsättning och förvaltning",
-        time: "1-3 dagar + löpande",
         body: "Applikationen sätts i drift med säkerhetskopior och övervakning på plats. Sedan hjälper jag till löpande eller lämnar över till er — beroende på vad ni vill.",
       },
     ],
